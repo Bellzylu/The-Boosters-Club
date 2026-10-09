@@ -378,15 +378,30 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .cta p{margin:4px 0 0;font-family:var(--display);font-size:26px;line-height:1.1;max-width:22ch}
 
 /* footer */
-footer{background:var(--foot);color:var(--on-dark);padding:clamp(40px,6vw,80px) clamp(16px,4vw,56px) 24px}
-.f-in{max-width:1120px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:32px clamp(24px,5vw,72px)}
-footer svg{width:120px;height:auto;display:block;margin-bottom:18px}
-footer p{margin:0;max-width:34ch;opacity:.85}
-footer h4{margin:0 0 12px;opacity:.6}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-footer ul a{text-decoration:none;font-family:var(--display);font-size:26px;line-height:1.1}
-footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
-.f-base{max-width:1120px;margin:clamp(32px,5vw,64px) auto 0;padding-top:16px;border-top:1px dotted rgba(243,235,221,.3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:.7}
+footer{background:var(--foot);color:var(--on-dark);padding:clamp(40px,5vw,72px) clamp(16px,4vw,56px) 20px;overflow:hidden}
+footer a{color:inherit}
+.f-news{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px clamp(24px,5vw,72px);align-items:end;padding-bottom:clamp(28px,4vw,48px);border-bottom:1px solid rgba(255,255,255,.18)}
+.f-news-t .micro{opacity:.7}
+.f-cta p{margin:0 0 18px;font-size:17px;line-height:1.5;opacity:.88;max-width:44ch}
+.f-cta-b{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.f-login{color:var(--on-dark);opacity:.8;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+.f-login:hover{opacity:1}
+.f-news h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,4vw,60px);line-height:1;margin:10px 0 0;letter-spacing:-.01em}
+.f-in{max-width:1240px;margin:clamp(32px,4vw,56px) auto 0;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,.8fr)) minmax(0,1.1fr);gap:32px clamp(24px,4vw,56px)}
+.f-about svg{width:110px;height:auto;display:block;margin-bottom:16px}
+.f-about p{margin:0;max-width:32ch;font-size:16px;line-height:1.5;opacity:.85}
+footer h4{margin:0 0 14px;opacity:.6;font-weight:500}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+footer ul a{text-decoration:none;font-family:var(--text);font-weight:400;font-size:18px;line-height:1.3;opacity:.92}
+footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.f-week{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:center;text-decoration:none}
+.f-week img{width:72px;height:72px;object-fit:cover;border-radius:50%;display:block}
+.f-week b{display:block;font-family:var(--text);font-weight:400;font-size:18px;line-height:1.25}
+.f-week span{display:block;margin-top:4px;opacity:.7}
+.f-week:hover b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.f-base{max-width:1240px;margin:clamp(36px,4vw,56px) auto 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:.7}
+@media (max-width:900px){.f-in{grid-template-columns:repeat(2,minmax(0,1fr))}.f-about{grid-column:1/-1}.f-news{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.f-base{flex-direction:column;gap:6px}}
 
 /* recipe page */
 .d-top{padding:14px clamp(14px,2.4vw,28px);border-bottom:1px dotted var(--rule)}
@@ -470,7 +485,7 @@ footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
   .checkout{position:static}
 }
 @media (max-width:720px){
-  .feature,.d-hero,.d-cook,.f-in{grid-template-columns:minmax(0,1fr)}
+  .feature,.d-hero,.d-cook{grid-template-columns:minmax(0,1fr)}
   .pic{aspect-ratio:1/1}
   .rwrap{grid-template-columns:minmax(0,1fr)}
   .art-img{aspect-ratio:4/3}
@@ -596,15 +611,20 @@ footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
 </main>
 
 <footer>
-  <div class="f-in">
-    <div>
-      <svg viewBox="0 0 200 124" role="img" aria-label="The Boosters Club"><use href="#sticker"/></svg>
-      <p>The Boosters Club is a recipe platform built around natural ingredients and foods that give you a boost.</p>
-    </div>
-    <div><h4 class="micro">Explore</h4><ul><li><a href="#recipes">Recipes</a></li><li><a href="#blog">Blog</a></li><li><a href="#merch">Merch</a></li><li><a href="#join">Join the Club</a></li></ul></div>
-    <div><h4 class="micro">The Club</h4><ul><li><a href="#about">About</a></li><li><a href="#recipes">All recipes</a></li><li><a href="#join">Membership</a></li></ul></div>
+  <div class="f-news">
+    <div class="f-news-t"><span class="micro">The Weekly Boost &nbsp;/&nbsp; Members</span><h2>One good recipe, <i>every Friday.</i></h2></div>
+    <div class="f-cta"><p>Join the Club for a new booster recipe each week, the full archive and shopping lists. From &pound;3 a month.</p><div class="f-cta-b"><a class="btn light" href="#join">Join the Club</a><a class="f-login micro" href="#login">Already a member? Log in</a></div></div>
   </div>
-  <div class="f-base micro"><span>&copy; 2026 The Boosters Club</span><span>Brand identity and website by Hiero Studio</span></div>
+  <div class="f-in">
+    <div class="f-about">
+      <svg viewBox="0 0 200 124" role="img" aria-label="The Boosters Club"><use href="#sticker"/></svg>
+      <p>A recipe club built around natural ingredients and the everyday foods that give you a boost.</p>
+    </div>
+    <nav class="f-col" aria-label="Explore"><h4 class="micro">Explore</h4><ul><li><a href="#recipes">Recipes</a></li><li><a href="#blog">Blog</a></li><li><a href="#merch">Merch</a></li><li><a href="#about">About</a></li></ul></nav>
+    <nav class="f-col" aria-label="Members"><h4 class="micro">Members</h4><ul><li><a href="#join">Join the Club</a></li><li><a href="#login">Log in</a></li><li><a href="#recipes">Members' recipes</a></li></ul></nav>
+    <div class="f-col"><h4 class="micro">This week</h4><a class="f-week" id="f-week" href="#recipes"></a></div>
+  </div>
+  <div class="f-base micro"><span>&copy; 2026 The Boosters Club</span><span>Eat a little brighter</span><span>Brand identity and website by Hiero Studio</span></div>
 </footer>
 
 <script>
@@ -717,7 +737,27 @@ var R=[
  why:[['Fibre','Butter beans and tomatoes bring a big helping of fibre.'],['Plant protein','Butter beans make this a filling bowl with no meat at all.'],['Calcium','Whipped ricotta adds creamy calcium to every spoonful.']],
  intro:'Butter beans in slow-cooked tomato sauce, whipped ricotta, fresh basil, chilli oil and toasted sourdough. Cosy, saucy and made for mopping up.',
  ing:['2 x 400g tins butter beans, drained','400g tin chopped tomatoes'],
- steps:['Soften a sliced onion and two garlic cloves in olive oil over a low heat for 10 minutes, then add the tomatoes and a pinch of salt and simmer gently.']}
+ steps:['Soften a sliced onion and two garlic cloves in olive oil over a low heat for 10 minutes, then add the tomatoes and a pinch of salt and simmer gently.']},
+{id:'mediterranean-sea-bass',locked:true,t:'Mediterranean Sea Bass',type:'Plates',time:'30 min',serves:2,img:'img/sea-bass.jpg',alt:'Overhead view of a plate of crispy-skinned sea bass on lemony butter beans with blistered cherry tomatoes, sautéed spinach, basil leaves and a lemon wedge.',
+ why:[['Lean protein','Sea bass is a light, flaky fish that still brings plenty of protein.'],['Fibre','Butter beans and spinach add a good helping of fibre.'],['Vitamin C','Blistered tomatoes and lemon bring vitamin C to the plate.']],
+ intro:'Crispy-skinned sea bass, lemon butter beans, blistered cherry tomatoes, sautéed spinach and basil oil. A Mediterranean supper in half an hour.',
+ ing:['2 sea bass fillets, skin on','400g tin butter beans, drained'],
+ steps:['Pat the sea bass skin completely dry with kitchen paper and season well, then score it lightly so it stays flat in the pan.']},
+{id:'sesame-tuna-mango',locked:true,t:'Sesame Tuna & Mango',type:'Bowls',time:'25 min',serves:2,img:'img/sesame-tuna.jpg',alt:'Overhead view of a bowl of sliced sesame-crusted seared tuna on brown rice with diced mango, sliced avocado, cucumber ribbons, edamame, red cabbage, coriander and a lime wedge.',
+ why:[['Protein','Seared tuna steak brings a big helping of lean protein.'],['Vitamin C','Mango and lime are both good sources of vitamin C.'],['Healthy fats','Avocado and sesame seeds add the kind of fats that help you absorb vitamins.']],
+ intro:'Sesame-crusted tuna, mango, avocado, cucumber ribbons, brown rice and a ginger-lime dressing. A bright, fresh bowl that comes together in 25 minutes.',
+ ing:['2 tuna steaks (about 150g each)','3 tbsp mixed black and white sesame seeds'],
+ steps:['Cook the brown rice in plenty of salted water until tender, then drain and leave to steam with the lid on.']},
+{id:'smoky-tomato-cod',locked:true,t:'Smoky Tomato Cod',type:'Plates',time:'35 min',serves:2,img:'img/smoky-tomato-cod.jpg',alt:'Overhead view of a bowl of oven-baked cod on a smoky roasted pepper and tomato sauce with chickpeas, Kalamata olives and fresh parsley.',
+ why:[['Lean protein','Cod is a light, lean white fish that still brings plenty of protein.'],['Fibre','Chickpeas and roasted peppers add a good helping of fibre.'],['Vitamin C','Roasted red peppers are one of the richest sources of vitamin C.']],
+ intro:'Oven-baked cod, smoky roasted pepper and tomato sauce, chickpeas, Kalamata olives and fresh parsley. A one-pan supper with a warm, smoky kick.',
+ ing:['2 skinless cod fillets (about 140g each)','2 roasted red peppers from a jar, sliced'],
+ steps:['Heat the oven to 200°C (180°C fan). Soften a sliced onion and two garlic cloves in olive oil in an ovenproof pan, then stir in smoked paprika for a minute.']},
+{id:'honey-mustard-salmon',locked:true,t:'Honey Mustard Salmon',type:'Plates',time:'35 min',serves:2,img:'img/honey-mustard-salmon.jpg',alt:'Overhead view of a plate of honey-mustard glazed salmon on green lentils with roasted beetroot, rocket, pine nuts, lemon yoghurt, dill and a lemon wedge.',
+ why:[['Omega-3','Salmon is an oily fish, one of the best sources of the omega-3 fats EPA and DHA.'],['Iron','Green lentils are a good plant source of iron.'],['Folate','Beetroot, lentils and rocket are all good sources of folate.']],
+ intro:'Honey-mustard glazed salmon, roasted beetroot, green lentils, rocket and lemon yoghurt. Earthy, sweet and sharp, all on one plate.',
+ ing:['2 salmon fillets','1 tbsp wholegrain mustard'],
+ steps:['Heat the oven to 200°C (180°C fan). Toss the beetroot chunks with olive oil and salt, and roast for 25 minutes until tender.']}
 ];
 var B=[
 {"id": "post-what-is-a-booster", "img": "img/cheek.jpg", "t": "What is a booster, anyway?", "tag": "The Club", "read": "5 min", "x": "Not a supplement, not a shot, not a miracle. Just the everyday foods that leave you feeling better than before you ate them, and how to bring more of them into your week.", "body": [["", "When we started The Boosters Club, we kept coming back to one question: which foods actually make a difference to how you feel on an ordinary Tuesday? Not in a lab, not in a headline, but at 3pm when the day is dragging, the inbox is full and the biscuit tin is calling.\n\nThe answer we kept landing on was surprisingly unglamorous. It was not a powder or a pill. It was oranges, chickpeas, oats, oily fish, seeds, yoghurt, leafy greens and a good handful of herbs. Everyday foods, eaten often, put together in ways that taste good. This post is our attempt to explain what we mean by a booster, and how we hope you will use the idea."], ["Food first, always", "A booster, for us, is a whole food that brings something genuinely useful to the plate. That might be fibre that keeps you full and keeps your gut happy. It might be healthy fats that help your body absorb certain vitamins. It might be protein that turns a snack into something that lasts until dinner. Or it might simply be colour, which is often a sign that a fruit or vegetable is bringing a range of vitamins and plant compounds with it.\n\nWhat a booster is not: a supplement, a shot, a 'superfood' with a dramatic price tag, or anything that promises to detox, cleanse or cure. Your liver and kidneys already handle the detoxing. Our job is to give the rest of you something good to work with."], ["The everyday boosters we lean on", "If you opened a Club member's cupboard, this is roughly what you would find. Most of it keeps well, and none of it is hard to track down.\n- Citrus: oranges, lemons and limes for vitamin C and a hit of brightness.\n- Pulses: tinned chickpeas, lentils and beans for fibre, plant protein and iron.\n- Whole grains: oats, brown rice, wholemeal bread, barley and bulgur wheat.\n- Oily fish: salmon, mackerel, sardines and trout, fresh, frozen or tinned.\n- Seeds and nuts: pumpkin, sunflower, chia, ground flax, walnuts and almonds.\n- Live yoghurt or kefir: an easy daily spoonful.\n- Leafy greens and herbs: spinach, kale, rocket, parsley, coriander and mint.\n- Colourful veg and fruit: peppers, carrots, beetroot, berries, tomatoes.\n\nNone of these are rare or fussy. That is the point. A booster should be something you can pick up on a weekday on the way home."], ["No rules, just more", "We are not interested in cutting things out, labelling foods as good or bad, or making anyone feel guilty about a slice of cake. The idea is to add. One more handful of herbs, a spoonful of seeds, a squeeze of lemon, a tin of beans stirred into the sauce. Small additions, repeated often, are what change the way you eat over months and years.\n\nThis matters because most of us in the UK fall short on a few things rather than overdoing everything. Adults are advised to eat 30g of fibre a day, and the average is closer to 20g. Many of us do not reach 5 A Day of fruit and vegetables, and most people eat less oily fish than the recommended one portion a week. Adding boosters chips away at all three at once, without anyone having to give up anything they love."], ["How to spot a booster on your plate", "You do not need an app or a spreadsheet. We use three quick questions when we look at a meal.\n- Is there something with fibre? Whole grains, pulses, veg, fruit, nuts or seeds.\n- Is there something with protein? Eggs, fish, yoghurt, beans, tofu, chicken, lentils.\n- Is there colour? At least two or three different colours of plant on the plate.\n\nIf the answer to all three is yes, you are in good shape. If one is missing, that is your booster opportunity. Plain pasta with pesto becomes a booster meal with a tin of chickpeas, a handful of spinach wilted in and some toasted seeds on top. Toast becomes one with an egg and sliced tomato."], ["Common mistakes we see", "A few habits get in the way of eating well, and we have been guilty of all of them.\n- Going all in on Monday. A whole new diet rarely survives to Thursday. One change a week sticks far better.\n- Treating one food as magic. No single ingredient does it all. Variety across the week matters much more than any one 'hero' food.\n- Forgetting flavour. If healthy food tastes dull, you will not eat it. Salt, acid, fat, herbs and crunch are your friends.\n- Buying fresh and forgetting it. Frozen berries, frozen peas and tinned fish are boosters too, and they wait patiently.\n\nAnd a gentle note: if you have a medical condition, are pregnant or are thinking about big changes to how you eat, your GP, a pharmacist or a registered dietitian is the right person to talk to. We are here for the everyday cooking, not to replace proper advice."], ["Where to start this week", "If you want a simple first step, try this. Pick one meal you already eat most days and add one booster to it. Seeds on your breakfast. A handful of rocket in your lunchtime sandwich. A tin of lentils in your bolognese. Do it every day for a week and see how it feels.\n\nWhen you are ready for a full recipe, The Golden Crunch Bowl is a good place to begin, because it shows the whole idea on one plate: grains, pulses, colour and crunch. The Fresh Start Grain Salad is another easy one to batch up on a Sunday and dip into all week."], ["Why the sticker", "Our oval sticker is a little reminder that the best boosters do not come in a packet. Put it on an orange, a lunchbox, the fridge door, your cheek. It is there to nudge you towards one more good thing, not to tell you off.\n\nThat is really all a booster is. A food that leaves you feeling a bit better than before you ate it, and a habit of reaching for it more often. Welcome to the Club. Now go and make something good."]]},
@@ -757,7 +797,11 @@ var CATS={
  'green-goddess-orzo':['Vegetarian'],
  'mango-chilli-prawn-tacos':['Fish & seafood','High protein'],
  'loaded-sweet-potato':['Vegetarian','High fibre'],
- 'creamy-tomato-butter-beans':['Vegetarian','High fibre']
+ 'creamy-tomato-butter-beans':['Vegetarian','High fibre'],
+ 'mediterranean-sea-bass':['Fish & seafood','High protein'],
+ 'sesame-tuna-mango':['Fish & seafood','High protein'],
+ 'smoky-tomato-cod':['Fish & seafood','High protein','High fibre'],
+ 'honey-mustard-salmon':['Fish & seafood','High protein','High fibre']
 };
 function dietOf(r){var d=(CATS[r.id]||[]).filter(function(c){return ['Vegetarian','Plant-based','Chicken','Fish & seafood','Red meat'].indexOf(c)>=0});return d.length?esc(d[d.length-1]):''}
 function cats(r){var c=(CATS[r.id]||[]).slice();var m=parseInt(r.time,10);if(m<=25&&!/overnight/.test(r.time))c.push('Quick');return c}
@@ -765,9 +809,9 @@ function cats(r){var c=(CATS[r.id]||[]).slice();var m=parseInt(r.time,10);if(m<=
 var BOOSTS=[['Protein',['Protein','Lean protein','Plant protein']],['Fibre',['Fibre']],['Omega-3',['Omega-3','Omega-3 ALA']],['Vitamin C',['Vitamin C']],['Vitamin A',['Vitamin A']],['Calcium',['Calcium']],['Folate',['Folate']],['Iron',['Iron']],['Gut health',['Live cultures','Probiotics']],['Healthy fats',['Healthy fats']],['B vitamins',['B vitamins']],['Potassium',['Potassium']]];
 function boosts(r){var have=r.why.map(function(w){return w[0]});return BOOSTS.filter(function(b){return b[1].some(function(n){return have.indexOf(n)>=0})}).map(function(b){return b[0]})}
 var GROUPS=[['Meal',['Breakfast','Bowls','Plates','Salads']],['Diet',['Vegetarian','Plant-based','Chicken','Fish & seafood','Red meat']],['Boost',BOOSTS.map(function(b){return b[0]})]];
-var SHORT={'sweet-potato-chickpea-bowl':'Golden crunch','roast-salmon-plate':'Omega power','chickpea-feta-mint-salad':'Fresh start','summer-glow-salad':'Summer glow','crispy-greens-potatoes':'Crispy greens','raspberry-cloud-chia':'Raspberry cloud','lemon-lift-plate':'Lemon lift','harissa-chicken-whipped-feta':'Harissa chicken','mediterranean-chicken-plate':'Mediterranean','lemon-cod-crushed-peas':'Lemon cod','sesame-tofu-greens':'Sesame tofu','morning-protein-plate':'Morning protein','ricotta-pancake-plate':'Ricotta pancakes','miso-salmon-sesame-rice':'Miso salmon','greek-chicken-souvlaki-plate':'Souvlaki','steak-green-chimichurri':'Steak','falafel-beetroot-hummus':'Falafel','sticky-ginger-chicken':'Sticky ginger','halloumi-watermelon-plate':'Halloumi','green-goddess-orzo':'Green goddess','mango-chilli-prawn-tacos':'Prawn tacos','loaded-sweet-potato':'Sweet potato','creamy-tomato-butter-beans':'Butter beans'};
-var TAG={'sweet-potato-chickpea-bowl':'Bowl','roast-salmon-plate':'Plate','chickpea-feta-mint-salad':'Salad','summer-glow-salad':'Salad','crispy-greens-potatoes':'Plate','raspberry-cloud-chia':'Breakfast','lemon-lift-plate':'Plate','harissa-chicken-whipped-feta':'Plate','mediterranean-chicken-plate':'Plate','lemon-cod-crushed-peas':'Plate','sesame-tofu-greens':'Bowl','morning-protein-plate':'Breakfast','ricotta-pancake-plate':'Breakfast','miso-salmon-sesame-rice':'Bowl','greek-chicken-souvlaki-plate':'Plate','steak-green-chimichurri':'Plate','falafel-beetroot-hummus':'Plate','sticky-ginger-chicken':'Bowl','halloumi-watermelon-plate':'Salad','green-goddess-orzo':'Bowl','mango-chilli-prawn-tacos':'Plate','loaded-sweet-potato':'Plate','creamy-tomato-butter-beans':'Bowl'};
-var POS={'sweet-potato-chickpea-bowl':'58% 50%','roast-salmon-plate':'64% 50%','chickpea-feta-mint-salad':'50% 50%','summer-glow-salad':'50% 50%','crispy-greens-potatoes':'50% 50%','raspberry-cloud-chia':'50% 50%','lemon-lift-plate':'50% 50%','harissa-chicken-whipped-feta':'50% 50%','mediterranean-chicken-plate':'50% 50%','lemon-cod-crushed-peas':'50% 50%','sesame-tofu-greens':'50% 50%','morning-protein-plate':'50% 50%','ricotta-pancake-plate':'50% 50%','miso-salmon-sesame-rice':'50% 50%','greek-chicken-souvlaki-plate':'50% 50%','steak-green-chimichurri':'50% 50%','falafel-beetroot-hummus':'50% 50%','sticky-ginger-chicken':'50% 50%','halloumi-watermelon-plate':'50% 50%','green-goddess-orzo':'50% 50%','mango-chilli-prawn-tacos':'50% 50%','loaded-sweet-potato':'50% 50%','creamy-tomato-butter-beans':'50% 50%'};
+var SHORT={'sweet-potato-chickpea-bowl':'Golden crunch','roast-salmon-plate':'Omega power','chickpea-feta-mint-salad':'Fresh start','summer-glow-salad':'Summer glow','crispy-greens-potatoes':'Crispy greens','raspberry-cloud-chia':'Raspberry cloud','lemon-lift-plate':'Lemon lift','harissa-chicken-whipped-feta':'Harissa chicken','mediterranean-chicken-plate':'Mediterranean','lemon-cod-crushed-peas':'Lemon cod','sesame-tofu-greens':'Sesame tofu','morning-protein-plate':'Morning protein','ricotta-pancake-plate':'Ricotta pancakes','miso-salmon-sesame-rice':'Miso salmon','greek-chicken-souvlaki-plate':'Souvlaki','steak-green-chimichurri':'Steak','falafel-beetroot-hummus':'Falafel','sticky-ginger-chicken':'Sticky ginger','halloumi-watermelon-plate':'Halloumi','green-goddess-orzo':'Green goddess','mango-chilli-prawn-tacos':'Prawn tacos','loaded-sweet-potato':'Sweet potato','creamy-tomato-butter-beans':'Butter beans','mediterranean-sea-bass':'Sea bass','sesame-tuna-mango':'Sesame tuna','smoky-tomato-cod':'Smoky cod','honey-mustard-salmon':'Honey mustard salmon'};
+var TAG={'sweet-potato-chickpea-bowl':'Bowl','roast-salmon-plate':'Plate','chickpea-feta-mint-salad':'Salad','summer-glow-salad':'Salad','crispy-greens-potatoes':'Plate','raspberry-cloud-chia':'Breakfast','lemon-lift-plate':'Plate','harissa-chicken-whipped-feta':'Plate','mediterranean-chicken-plate':'Plate','lemon-cod-crushed-peas':'Plate','sesame-tofu-greens':'Bowl','morning-protein-plate':'Breakfast','ricotta-pancake-plate':'Breakfast','miso-salmon-sesame-rice':'Bowl','greek-chicken-souvlaki-plate':'Plate','steak-green-chimichurri':'Plate','falafel-beetroot-hummus':'Plate','sticky-ginger-chicken':'Bowl','halloumi-watermelon-plate':'Salad','green-goddess-orzo':'Bowl','mango-chilli-prawn-tacos':'Plate','loaded-sweet-potato':'Plate','creamy-tomato-butter-beans':'Bowl','mediterranean-sea-bass':'Plate','sesame-tuna-mango':'Bowl','smoky-tomato-cod':'Plate','honey-mustard-salmon':'Plate'};
+var POS={'sweet-potato-chickpea-bowl':'58% 50%','roast-salmon-plate':'64% 50%','chickpea-feta-mint-salad':'50% 50%','summer-glow-salad':'50% 50%','crispy-greens-potatoes':'50% 50%','raspberry-cloud-chia':'50% 50%','lemon-lift-plate':'50% 50%','harissa-chicken-whipped-feta':'50% 50%','mediterranean-chicken-plate':'50% 50%','lemon-cod-crushed-peas':'50% 50%','sesame-tofu-greens':'50% 50%','morning-protein-plate':'50% 50%','ricotta-pancake-plate':'50% 50%','miso-salmon-sesame-rice':'50% 50%','greek-chicken-souvlaki-plate':'50% 50%','steak-green-chimichurri':'50% 50%','falafel-beetroot-hummus':'50% 50%','sticky-ginger-chicken':'50% 50%','halloumi-watermelon-plate':'50% 50%','green-goddess-orzo':'50% 50%','mango-chilli-prawn-tacos':'50% 50%','loaded-sweet-potato':'50% 50%','creamy-tomato-butter-beans':'50% 50%','mediterranean-sea-bass':'50% 50%','sesame-tuna-mango':'50% 50%','smoky-tomato-cod':'50% 50%','honey-mustard-salmon':'50% 50%'};
 var STK='<svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg>';
 var $=function(s){return document.querySelector(s)};
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
@@ -797,7 +841,13 @@ function autoScroll(el){
   el.innerHTML='<div class="track" style="animation-duration:'+(R.length*7)+'s">'+c+c.replace(/<a class="cell"/g,'<a class="cell" tabindex="-1" aria-hidden="true"')+'</div>';
   el.classList.add('auto');
 }
+function drawFooter(){
+  var w=R[R.length-1];
+  $('#f-week').href='#'+w.id;
+  $('#f-week').innerHTML='<img src="'+w.img+'" alt="" loading="lazy"><span><b>'+esc(w.t)+'</b><span class="micro">'+(w.locked?'Members &middot; ':'')+w.time+'</span></span>';
+}
 function drawHome(){
+  drawFooter();
   autoScroll($('#strip'));
   $('#posts').innerHTML=B.slice(0,6).map(function(b,i){return '<a class="post" href="#'+b.id+'"><span class="row micro"><span>'+esc(b.tag)+'</span><span>'+num(i)+'</span></span><h3>'+esc(b.t)+'</h3><p>'+esc(b.x)+'</p><span class="go micro">Read &middot; '+b.read+'</span></a>'}).join('');
   /* homepage list: the free recipes, then the newest members' ones (the rest live on the Recipes page) */
