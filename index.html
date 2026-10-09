@@ -5,7 +5,7 @@
 <style>
 /* Layout: café-menu paper at the top (featured plate, numbered cells, big wordmark), then a full-screen photo, the recipe list, membership, blog, and a green footer. */
 :root{
-  --page:#FFFFFF; --ground:#F4E9C6; --wash:.8; --paper:#FFFFFF; --ink:#1A1813; --soft:#5E5A4C; --rule:rgba(26,24,19,.28); --cell:#F3F1EA; --hi:#173C20;
+  --page:#FFFFFF; --ground:#FFFFFF; --wash:.8; --paper:#FFFFFF; --ink:#1A1813; --soft:#5E5A4C; --rule:rgba(26,24,19,.28); --cell:#FFFFFF; --hi:#173C20;
   --list-bg:#FFFFFF; --list-dim:#B9BFAD; --list-hot:#E8622A;
   --foot:#173C20; --on-foot:#F3EBDD; --on-dark:#FFFFFF;
   --display:'DM Serif Display',Georgia,serif; --text:'Newsreader',Georgia,serif; --micro:'DM Sans',system-ui,sans-serif;
@@ -178,7 +178,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .lock-card .micro{opacity:.8}
 .lock-card h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,3.4vw,46px);line-height:1;margin:2px 0 4px}
 .lock-card p{margin:0 0 10px;max-width:40ch;font-size:17px;line-height:1.45}
-.lock-card .btn{background:var(--on-foot);color:var(--hi)}
+.lock-card .btn{background:#fff;color:var(--hi)}
 .rlist .lock{display:inline-block;vertical-align:middle;margin-left:14px;padding:5px 10px;border:1px solid currentColor;border-radius:999px;font-size:9px;letter-spacing:.16em;transform:translateY(-.4em)}
 
 /* recipes page */
@@ -230,7 +230,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px}
 .seg button{font-family:var(--micro);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;background:none;border:0;color:var(--on-dark);padding:10px 8px;border-radius:999px;cursor:pointer}
 .seg button small{display:block;font-size:8px;letter-spacing:.14em;opacity:.75;margin-top:2px}
-.seg button[aria-checked="true"]{background:var(--on-foot);color:var(--hi)}
+.seg button[aria-checked="true"]{background:#fff;color:var(--hi)}
 .checkout .price{font-family:var(--display);font-size:clamp(54px,5vw,76px);line-height:1}
 .checkout .price small{font-family:var(--micro);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .co-note{margin:-6px 0 0;opacity:.75}
@@ -302,6 +302,45 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .lg-join{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:18px;border-top:1px dotted var(--rule);color:var(--soft)}
 .lg-join a{color:var(--ink)}
 
+/* boost finder: a menu-style list of needs on the left, the matching boosts and recipes on the right */
+.finder{background:var(--paper);border-top:1px dotted var(--rule);padding:clamp(48px,6vw,96px) clamp(16px,4vw,56px)}
+.fd-in{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.fd-eyebrow{color:var(--soft)}
+.fd-left h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,5.4vw,84px);line-height:.95;letter-spacing:-.015em;margin:14px 0 clamp(24px,3.5vh,40px)}
+.fd-needs{list-style:none;margin:0;padding:0;border-top:1px dotted var(--rule)}
+.fd-needs li{border-bottom:1px dotted var(--rule)}
+.need{width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:baseline;gap:12px;background:none;border:0;padding:clamp(10px,1.6vh,15px) 0;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+.fd-n{color:var(--soft)}
+.fd-name{font-family:var(--display);font-size:clamp(22px,2.1vw,30px);line-height:1.1;transition:color .2s,padding .25s}
+.fd-count{color:var(--soft)}
+.need:hover .fd-name{color:var(--hi)}
+.need[aria-pressed="true"] .fd-name{color:var(--hi);font-style:italic}
+.need[aria-pressed="true"] .fd-n,.need[aria-pressed="true"] .fd-count{color:var(--hi)}
+.need[aria-pressed="true"] .fd-count::after{content:"  \2192"}
+.fd-right{position:sticky;top:calc(var(--toph) + 24px)}
+.fd-why{background:var(--hi);color:var(--on-dark);padding:clamp(20px,2.4vw,30px)}
+.fd-why-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.fd-why-h svg{width:54px;height:auto;display:block}
+.fd-why-h .micro{opacity:.8}
+.fd-why b{display:block;font-family:var(--club);font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(28px,2.6vw,38px);line-height:1}
+.fd-why p{margin:10px 0 0;font-size:16px;line-height:1.5;max-width:46ch}
+.fd-list{list-style:none;margin:0;padding:0}
+.fd-list li{border-bottom:1px dotted var(--rule)}
+.fd-list a{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;text-decoration:none}
+.fd-list .im{display:block;width:76px;height:76px;overflow:hidden}
+.fd-list img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.15);transition:transform .5s ease}
+.fd-list a:hover img{transform:scale(1.25)}
+.fd-t b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(20px,1.7vw,24px);line-height:1.1}
+.fd-t .micro{display:block;margin-top:6px;color:var(--soft)}
+.fd-go{font-size:20px;color:var(--hi);transition:transform .2s}
+.fd-list a:hover .fd-go{transform:translateX(4px)}
+.fd-list a:hover b{color:var(--hi)}
+.fd-foot{margin-top:18px}
+.fd-all{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.fd-note{color:var(--soft);font-size:9px;margin:22px 0 0}
+@media (max-width:900px){.fd-in{grid-template-columns:minmax(0,1fr)}.fd-right{position:static}}
+@media (max-width:520px){.need{grid-template-columns:30px minmax(0,1fr) auto}.fd-list a{grid-template-columns:64px minmax(0,1fr) auto}.fd-list .im{width:64px;height:64px}}
+
 /* merch page */
 .prod{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(32px,5vw,64px);border-top:1px dotted var(--rule)}
 .prod.flip .im{order:2}
@@ -339,7 +378,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .art-body>p:first-child::first-letter{float:left;font-family:var(--display);font-size:4.4em;line-height:.82;padding:6px 10px 0 0;color:var(--hi)}
 .art-body h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,2.6vw,40px);line-height:1.08;margin:48px 0 14px;scroll-margin-top:calc(var(--toph) + 24px)}
 .art-body p{margin:0 0 18px}
-.art-body ul{margin:0 0 22px;padding:18px 22px 18px 42px;background:var(--cell)}
+.art-body ul{margin:0 0 22px;padding:2px 0 2px 40px;border-left:2px solid var(--hi)}
 .art-body li{margin-bottom:8px;padding-left:4px}
 .art-body li:last-child{margin-bottom:0}
 .art-body li::marker{color:var(--list-hot)}
@@ -351,7 +390,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 /* membership */
 .btn{display:inline-block;background:var(--hi);color:var(--on-dark);text-decoration:none;font-family:var(--micro);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:14px 22px;border-radius:999px;border:1px solid transparent;transition:opacity .2s}
 .btn:hover{opacity:.85}
-.btn.light{background:var(--on-foot);color:var(--hi)}
+.btn.light{background:#fff;color:var(--hi)}
 .btn.ghost{background:transparent;color:inherit;border-color:currentColor}
 .top nav .btn{padding:7px 14px;border-bottom:1px solid transparent;margin-block:-2px}
 .top nav .btn:hover{border-color:transparent}
@@ -360,7 +399,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .join-lede{font-size:clamp(18px,1.5vw,21px);line-height:1.45;margin:0 0 clamp(20px,3vh,32px);opacity:.92}
 .plans{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(12px,1.6vw,20px)}
 .plan{display:flex;flex-direction:column;gap:12px;padding:clamp(18px,2.4vw,32px);border:1px dotted rgba(243,235,221,.45)}
-.plan.main{background:var(--on-foot);color:var(--ink);border-color:transparent}
+.plan.main{background:#fff;color:var(--ink);border-color:transparent}
 .plan-top{display:flex;justify-content:space-between;align-items:center}
 .plan-top svg{width:64px;height:auto;display:block}
 .price{font-family:var(--display);font-size:clamp(44px,4.6vw,68px);line-height:1}
@@ -576,6 +615,22 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
       </div>
     </section>
 
+    <section class="finder" id="finder" aria-labelledby="finder-h">
+      <div class="fd-in">
+        <div class="fd-left">
+          <span class="micro fd-eyebrow">The Boost finder</span>
+          <h2 id="finder-h">What do you<br><i>need today?</i></h2>
+          <ol class="fd-needs" id="fd-needs" aria-label="Choose what you need"></ol>
+        </div>
+        <div class="fd-right">
+          <div class="fd-why" id="fd-why" role="status"></div>
+          <ul class="fd-list" id="fd-list"></ul>
+          <div class="fd-foot"><a class="micro fd-all" id="fd-all" href="#recipes">See every recipe &rarr;</a></div>
+          <p class="micro fd-note">Everyday food as part of a varied, balanced diet. Not a treatment for any condition.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="sec join" id="weekly-boost" aria-labelledby="join-h">
       <div class="sec-in">
         <div class="sec-h"><h2 id="join-h">The Weekly <i>Boost.</i></h2><span class="micro">Membership</span></div>
@@ -619,7 +674,7 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
       <svg viewBox="0 0 200 124" role="img" aria-label="The Boosters Club"><use href="#sticker"/></svg>
       <p>A recipe club built around natural ingredients and the everyday foods that give you a boost.</p>
     </div>
-    <nav class="f-col" aria-label="Explore"><h4 class="micro">Explore</h4><ul><li><a href="#recipes">Recipes</a></li><li><a href="#blog">Blog</a></li><li><a href="#merch">Merch</a></li><li><a href="#about">About</a></li></ul></nav>
+    <nav class="f-col" aria-label="Explore"><h4 class="micro">Explore</h4><ul><li><a href="#recipes">Recipes</a></li><li><a href="#blog">Blog</a></li><li><a href="#merch">Merch</a></li><li><a href="#about">About</a></li><li><a href="#finder">Boost finder</a></li></ul></nav>
     <nav class="f-col" aria-label="Members"><h4 class="micro">Members</h4><ul><li><a href="#join">Join the Club</a></li><li><a href="#login">Log in</a></li><li><a href="#recipes">Members&rsquo; recipes</a></li></ul></nav>
     <div class="f-col"><h4 class="micro">This week</h4><a class="f-week" id="f-week" href="#recipes"></a></div>
   </div>
@@ -845,7 +900,36 @@ function drawFooter(){
   $('#f-week').href='#'+w.id;
   $('#f-week').innerHTML='<img src="'+w.img+'" alt="" loading="lazy"><span><b>'+esc(w.t)+'</b><span class="micro">'+(w.locked?'Members &middot; ':'')+w.time+'</span></span>';
 }
+/* Boost finder: each need maps to boosts (the BOOSTS groups); wording follows UK authorised health claims */
+var NEEDS=[
+ {k:'tired',n:'Beat tiredness',b:['Iron','B vitamins','Vitamin C'],w:'Iron, vitamin C and B vitamins all contribute to the reduction of tiredness and fatigue.'},
+ {k:'immune',n:'Immune support',b:['Vitamin C'],w:'Vitamin C contributes to the normal function of the immune system.'},
+ {k:'gut',n:'Happy gut',b:['Fibre','Gut health'],w:'Fibre-rich food is part of a healthy gut, and live yoghurt adds cultures to a varied diet.'},
+ {k:'bones',n:'Strong bones',b:['Calcium'],w:'Calcium is needed for the maintenance of normal bones and teeth.'},
+ {k:'heart',n:'Heart & brain',b:['Omega-3'],w:'EPA and DHA from oily fish contribute to the normal function of the heart, and DHA to normal brain function.'},
+ {k:'muscle',n:'Muscle & recovery',b:['Protein'],w:'Protein contributes to the growth and maintenance of muscle mass.'},
+ {k:'skin',n:'Healthy skin',b:['Vitamin A','Vitamin C'],w:'Vitamin A contributes to the maintenance of normal skin, and vitamin C to normal collagen formation for healthy skin.'}
+];
+function needMatches(nd){
+  return R.map(function(r,i){var bs=boosts(r),hit=nd.b.filter(function(x){return bs.indexOf(x)>=0});return {r:r,i:i,hit:hit}})
+   .filter(function(x){return x.hit.length})
+   .sort(function(a,b){return (b.hit.length-a.hit.length)||((a.r.locked?1:0)-(b.r.locked?1:0))||(a.i-b.i)});
+}
+function drawFinder(k){
+  $('#fd-needs').innerHTML=NEEDS.map(function(nd,i){var n=needMatches(nd).length;return '<li><button type="button" class="need" data-need="'+nd.k+'" aria-pressed="'+(nd.k===k)+'"><span class="fd-n micro">'+('0'+(i+1)).slice(-2)+'</span><span class="fd-name">'+esc(nd.n)+'</span><span class="fd-count micro">'+n+' recipes</span></button></li>'}).join('');
+  var nd=NEEDS.filter(function(x){return x.k===k})[0],ms=needMatches(nd);
+  $('#fd-why').innerHTML='<div class="fd-why-h"><svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg><span class="micro">'+esc(nd.n)+'</span></div><b>'+nd.b.join(' &middot; ')+'</b><p>'+esc(nd.w)+'</p>';
+  $('#fd-list').innerHTML=ms.slice(0,4).map(function(m){var r=m.r;return '<li><a href="#'+r.id+'"><span class="im"><img src="'+r.img+'" alt="" loading="lazy" decoding="async"></span>'+
+    '<span class="fd-t"><b>'+esc(r.t)+'</b><span class="micro">'+m.hit.map(esc).join(' &middot; ')+' &nbsp;/&nbsp; '+r.time+(r.locked?' &nbsp;/&nbsp; Members':'')+'</span></span><span class="fd-go" aria-hidden="true">&rarr;</span></a></li>'}).join('');
+  $('#fd-all').innerHTML=ms.length>4?'See all '+ms.length+' recipes for '+esc(nd.n.toLowerCase())+' &rarr;':'See every recipe &rarr;';
+  $('#fd-all').dataset.need=k;
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.need');if(b){drawFinder(b.dataset.need);return}
+  var a=e.target.closest('#fd-all');if(a){var nd=NEEDS.filter(function(x){return x.k===a.dataset.need})[0];if(nd&&nd.b.length===1)window.__needFilter=nd.b[0]}
+});
 function drawHome(){
+  drawFinder('tired');
   drawFooter();
   autoScroll($('#strip'));
   $('#posts').innerHTML=B.slice(0,6).map(function(b,i){return '<a class="post" href="#'+b.id+'"><span class="row micro"><span>'+esc(b.tag)+'</span><span>'+num(i)+'</span></span><h3>'+esc(b.t)+'</h3><p>'+esc(b.x)+'</p><span class="go micro">Read &middot; '+b.read+'</span></a>'}).join('');
@@ -898,7 +982,7 @@ function drawPost(b){
     '<figure class="art-img"><img src="'+b.img+'" alt=""></figure>'+
     '<div class="art-grid">'+
      '<aside class="art-side"><div class="art-side-in">'+
-      '<h2 class="micro">In this article</h2><ol class="toc">'+secs.map(function(x){return '<li><a href="#'+b.id+'" data-jump="'+sid(x[0])+'">'+esc(x[0])+'</a></li>'}).join('')+'</ol>'+
+      '<h2 class="micro">In this article</h2><ol class="toc">'+secs.map(function(x){return '<li><a href="#'+b.id+'" data-jump="'+sid(x[0])+'">'+esc(x[0].replace(/^\d+\.\s*/,''))+'</a></li>'}).join('')+'</ol>'+
       '<div class="art-join"><svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg><p>A new booster recipe every Friday.</p><a class="btn light" href="#join">Join the Club</a></div>'+
      '</div></aside>'+
      '<div class="art-body">'+
@@ -1135,7 +1219,7 @@ function route(){
   if(h==='about'){drawAbout();$('#home').hidden=true;$('#detail').hidden=false;document.title='About | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='login'){drawLogin();$('#home').hidden=true;$('#detail').hidden=false;document.title='Log in | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='join'){drawJoin();$('#home').hidden=true;$('#detail').hidden=false;document.title='Join the Club | The Boosters Club';window.scrollTo(0,0);fit();return}
-  if(h==='recipes'){drawRecipes();$('#home').hidden=true;$('#detail').hidden=false;document.title='Recipes | The Boosters Club';window.scrollTo(0,0);fit();return}
+  if(h==='recipes'){drawRecipes();if(window.__needFilter){var f=window.__needFilter;window.__needFilter=null;var c=[].find.call(document.querySelectorAll('.chip'),function(x){return x.dataset.f===f});if(c)c.click()}$('#home').hidden=true;$('#detail').hidden=false;document.title='Recipes | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='blog'){drawBlog();$('#home').hidden=true;$('#detail').hidden=false;document.title='Blog | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='merch'){drawMerch();$('#home').hidden=true;$('#detail').hidden=false;document.title='Merch | The Boosters Club';window.scrollTo(0,0);fit();return}
   var b=B.filter(function(x){return x.id===h})[0];
