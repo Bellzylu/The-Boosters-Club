@@ -1,0 +1,337 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The Boosters Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Bricolage+Grotesque:opsz,wght@12..96,700&family=DM+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">
+<style>
+/* Layout: café-menu paper at the top (featured plate, numbered cells, big wordmark), then a full-screen photo, the cropped-photo recipe list, merch, and a green footer. */
+:root{
+  --page:#FFFFFF; --ground:#F4E9C6; --wash:.8; --paper:#FFFFFF; --ink:#1A1813; --soft:#5E5A4C; --rule:rgba(26,24,19,.28); --cell:#F3F1EA; --hi:#173C20;
+  --list-bg:#FFFFFF; --list-dim:#B9BFAD; --list-hot:#E8622A;
+  --foot:#102C19; --on-foot:#F3EBDD;
+  --display:'Instrument Serif','Times New Roman',serif; --text:'Newsreader',Georgia,serif; --micro:'DM Sans',system-ui,sans-serif;
+  --club:'Barlow Condensed','Arial Narrow',Impact,sans-serif; --grot:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  scroll-padding-top:64px;color-scheme:light;
+}
+
+*{box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:var(--text);font-size:18px;line-height:1.55;margin:0;padding:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--hi);outline-offset:3px}
+.micro{font-family:var(--micro);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gut{padding-inline:clamp(16px,4vw,56px)}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--page);border-bottom:1px dotted var(--rule);display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px clamp(16px,4vw,56px)}
+.top svg{width:58px;height:auto;display:block}
+.top nav{display:flex;gap:clamp(16px,3.4vw,40px)}
+.top nav a{text-decoration:none;padding-block:6px;border-bottom:1px solid transparent}
+.top nav a:hover{border-color:var(--ink)}
+
+/* stage: blurred photo backdrop with two separate paper panels, like the menu reference */
+.stage{position:relative;overflow:hidden;background:var(--ground);padding:clamp(16px,4vw,56px)}
+.stage.lead{background:var(--paper);padding:0 clamp(8px,2.2vw,32px)}
+.backdrop{position:absolute;inset:-40px;background:url(img/lemons.jpg) center/cover;filter:blur(10px) saturate(.9);opacity:var(--wash);pointer-events:none}
+.panels{position:relative;max-width:1200px;margin-inline:auto;display:grid;gap:0}
+.sheet{position:relative;max-width:1120px;margin-inline:auto;background:var(--paper)}
+
+.pic{position:relative;background:var(--cell);aspect-ratio:1/1;overflow:hidden}
+.pic .l{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+.pic .l.on{opacity:1}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+
+.strip-panel{background:var(--paper)}
+.strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px dotted var(--rule);border-left:1px dotted var(--rule)}
+.cell{display:block;text-align:left;background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:none;border-right:1px dotted var(--rule);min-width:0}
+button.cell,a.cell{cursor:pointer}
+.cell .ph{display:block;aspect-ratio:1/1;background:var(--cell);overflow:hidden;margin:clamp(10px,2.4vw,20px) clamp(4px,1vw,8px) 0}
+.cell .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
+.cell .row{display:flex;justify-content:space-between;margin-top:clamp(8px,1.6vw,14px);padding:clamp(5px,.9vw,8px) clamp(5px,1vw,10px);border-top:1px dotted var(--rule);border-bottom:1px dotted var(--rule);font-size:8px;letter-spacing:.14em;color:var(--soft)}
+.cell::after{content:'';display:block;height:clamp(22px,4.6vw,48px)}
+.cell[aria-current="true"] .row{color:var(--ink)}
+.cell[aria-current="true"] .ph{outline:1px solid var(--ink);outline-offset:-1px}
+.cell.empty .ph{display:grid;place-items:center;background:transparent;border:1px dotted var(--rule)}
+.cell.empty .ph i{display:block;width:62%;aspect-ratio:1;border-radius:50%;border:1px dotted var(--rule)}
+.blank{height:clamp(80px,22vw,250px)}
+
+.band{background:var(--paper);border-top:1px dotted var(--rule);padding:0 clamp(8px,2.2vw,32px) clamp(24px,4vw,56px)}
+.band .panels{display:block}
+.title{position:relative;padding:clamp(40px,8vw,110px) 3% clamp(22px,3vw,44px) 0}
+.sheet .title{padding-left:2.4%}
+.labels{position:relative;height:14px;margin-bottom:6px;color:var(--ink)}
+.labels span{position:absolute;top:0;left:0;white-space:nowrap}
+.labels span:nth-child(2){left:13.5%}
+.labels span:nth-child(3){left:30.5%}
+.big{margin:0;font-size:0;line-height:0;font-weight:600}
+.big .fit{display:inline-block;white-space:nowrap;font-family:var(--club);font-weight:600;text-transform:uppercase;letter-spacing:.005em;line-height:.84;font-size:80px;color:var(--ink)}
+.title a{text-decoration:none;display:block}
+
+/* full screen face */
+.face{position:relative;height:100svh;min-height:460px;max-height:1100px;background:#c78a52}
+.face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+
+/* recipe list with cropped photo */
+.recipes{background:var(--list-bg)}
+.rwrap{max-width:1360px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,29%,400px);gap:clamp(24px,5vw,80px);align-items:center;padding:clamp(40px,6vw,88px) clamp(16px,4vw,56px)}
+.rlist{list-style:none;margin:0;padding:0}
+.rlist a{display:block;text-decoration:none;font-family:var(--grot);font-weight:700;font-size:clamp(44px,6.6vw,96px);line-height:1.04;letter-spacing:-.045em;color:var(--list-dim);transition:color .25s}
+.rlist a.on,.rlist a:hover,.rlist a:focus-visible{color:var(--list-hot)}
+.crop{position:relative;height:min(82vh,780px);min-height:360px;overflow:hidden;background:var(--cell)}
+.crop .l{position:absolute;inset:0;opacity:0;transition:opacity .4s ease}
+.crop .l.on{opacity:1}
+.crop img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* merch + blog */
+.sec{padding:clamp(56px,8vw,112px) clamp(16px,4vw,56px)}
+.sec-in{max-width:1120px;margin-inline:auto}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sec-h h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,92px);line-height:.95;letter-spacing:-.015em;margin:0}
+.sec-h h2 i{font-style:italic}
+.sec-h .micro{color:var(--soft)}
+.shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px dotted var(--rule)}
+.item{padding:14px;border-right:1px dotted var(--rule);min-width:0}
+.item:last-child{border-right:0}
+.item .im{aspect-ratio:4/5;background:var(--cell);overflow:hidden;display:block}
+.item .im img{width:100%;height:100%;object-fit:cover;display:block}
+.item.empty .im{display:grid;place-items:center;background:transparent;border:1px dotted var(--rule)}
+.item.empty .im i{width:48%;aspect-ratio:1;border-radius:50%;border:1px dotted var(--rule);display:block}
+.item .row{display:flex;justify-content:space-between;margin-top:12px;color:var(--soft)}
+.item h3{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1;margin:4px 0 2px}
+.item .soon{color:var(--soft)}
+.blog{border-top:1px dotted var(--rule)}
+
+/* footer */
+footer{background:var(--foot);color:var(--on-foot);padding:clamp(40px,6vw,80px) clamp(16px,4vw,56px) 24px}
+.f-in{max-width:1120px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:32px clamp(24px,5vw,72px)}
+footer svg{width:120px;height:auto;display:block;margin-bottom:18px}
+footer p{margin:0;max-width:34ch;opacity:.85}
+footer h4{margin:0 0 12px;opacity:.6}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer ul a{text-decoration:none;font-family:var(--display);font-size:26px;line-height:1.1}
+footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
+.f-base{max-width:1120px;margin:clamp(32px,5vw,64px) auto 0;padding-top:16px;border-top:1px dotted rgba(243,235,221,.3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:.7}
+
+/* recipe page */
+.d-top{padding:14px clamp(14px,2.4vw,28px);border-bottom:1px dotted var(--rule)}
+.d-top a{text-decoration:none}
+.d-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);border-bottom:1px dotted var(--rule)}
+.d-main .pic{aspect-ratio:1/1;position:sticky;top:60px;align-self:start}
+.d-main .pic .l{opacity:1}
+.d-body{padding:clamp(24px,4.4vw,56px)}
+.d-body h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.6vw,78px);line-height:.98;letter-spacing:-.015em;margin:10px 0 16px;text-wrap:balance}
+.d-body .lede{font-style:italic;font-size:21px;line-height:1.42;max-width:34ch;margin:0}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px dotted var(--rule);margin:28px 0 8px}
+.facts div{padding:12px 12px 12px 0}
+.facts div+div{padding-left:14px;border-left:1px dotted var(--rule)}
+.facts b{display:block;font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1;margin-top:2px}
+.d-body h2.micro{margin:34px 0 8px}
+.ing{list-style:none;margin:0;padding:0;counter-reset:i}
+.ing li{counter-increment:i;display:grid;grid-template-columns:44px minmax(0,1fr);padding:9px 0;border-bottom:1px dotted var(--rule)}
+.ing li::before{content:counter(i,decimal-leading-zero);font-family:var(--micro);font-size:10px;letter-spacing:.14em;padding-top:7px;color:var(--soft)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:18px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr)}
+.steps li::before{content:counter(s);font-family:var(--display);font-style:italic;font-size:34px;line-height:1}
+
+@media (max-width:900px){
+  .strip{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cell:nth-child(n+4){border-top:1px dotted var(--rule)}
+}
+@media (max-width:720px){
+  .feature,.d-main,.f-in{grid-template-columns:minmax(0,1fr)}
+  .pic{aspect-ratio:1/1}
+  .d-main .pic{position:static}
+  .rwrap{grid-template-columns:minmax(0,1fr)}
+  .crop{height:420px}
+  .shelf{grid-template-columns:minmax(0,1fr)}
+  .item{border-right:0;border-bottom:1px dotted var(--rule)}
+  .item:last-child{border-bottom:0}
+  .top svg{width:50px}
+  .top nav{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){.pic .l,.crop .l,.cell .ph img,.rlist a{transition:none}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sticker" viewBox="0 0 200 124">
+    <ellipse cx="100" cy="62" rx="98" ry="60" fill="#173C20"/>
+    <ellipse cx="100" cy="62" rx="90" ry="52" fill="none" stroke="#F3EBDD" stroke-width="2.5"/>
+    <text x="100" y="40" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="500" font-size="22" letter-spacing="3" fill="#F3EBDD">THE</text>
+    <text x="100" y="82" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="600" font-size="46" letter-spacing="1" fill="#F3EBDD">BOOSTERS</text>
+    <text x="100" y="105" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="500" font-size="22" letter-spacing="4" fill="#F3EBDD">CLUB</text>
+  </symbol>
+</svg>
+
+<header class="top">
+  <a href="#" aria-label="The Boosters Club, home"><svg viewBox="0 0 200 124" role="img" aria-label="The Boosters Club"><use href="#sticker"/></svg></a>
+  <nav class="micro" aria-label="Main"><a href="#menu">Recipes</a><a href="#blog">Blog</a><a href="#about">About</a><a href="#merch">Merch</a></nav>
+</header>
+
+<main>
+  <div id="home">
+    <div class="stage lead" id="menu">
+      <div class="panels">
+        <section class="strip-panel">
+          <div class="strip" id="strip" aria-label="Recipes"></div>
+          <div class="blank"></div>
+        </section>
+      </div>
+    </div>
+    <div class="band">
+      <div class="panels">
+        <section class="title">
+          <div class="labels micro"><span>The</span><span>Boosters</span><span>Club</span></div>
+          <h2 class="big"><span class="fit">The Boosters Club</span></h2>
+        </section>
+      </div>
+    </div>
+
+    <section class="face" aria-label="The Boosters Club">
+      <img src="img/cheek.jpg" alt="A woman holds an orange to her cheek, the small oval Boosters Club sticker on both the fruit and her skin.">
+    </section>
+
+    <section class="recipes" id="all-recipes" aria-label="All recipes">
+      <div class="rwrap">
+        <ul class="rlist" id="rlist"></ul>
+        <div class="crop" id="crop" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="sec" id="merch">
+      <div class="sec-in">
+        <div class="sec-h"><h2>Wear the <i>sticker.</i></h2><span class="micro">Merch</span></div>
+        <div class="shelf">
+          <div class="item"><span class="im"><img src="img/bag.jpg" alt="An orange string bag printed with the Boosters wordmark, packed with kale, tomatoes, citrus, carrots and bananas." loading="lazy"></span><div class="row micro"><span>Item</span><span>M01</span></div><h3>The Club bag</h3><span class="micro soon">Coming soon</span></div>
+          <div class="item"><span class="im"><img src="img/hoodie.jpg" alt="A woman in a cream and dark green Boosters Club hoodie holds out a glass of fresh orange juice." loading="lazy"></span><div class="row micro"><span>Item</span><span>M02</span></div><h3>The Club hoodie</h3><span class="micro soon">Coming soon</span></div>
+          <div class="item empty"><span class="im"><i></i></span><div class="row micro"><span>Item</span><span>M03</span></div><h3>More to come</h3><span class="micro soon">Image to come</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec blog" id="blog">
+      <div class="sec-in">
+        <div class="sec-h"><h2>The <i>Blog</i></h2><span class="micro">Posts to come</span></div>
+        <div class="shelf">
+          <div class="item empty"><span class="im"><i></i></span><div class="row micro"><span>Post</span><span>001</span></div><h3>Title to come</h3></div>
+          <div class="item empty"><span class="im"><i></i></span><div class="row micro"><span>Post</span><span>002</span></div><h3>Title to come</h3></div>
+          <div class="item empty"><span class="im"><i></i></span><div class="row micro"><span>Post</span><span>003</span></div><h3>Title to come</h3></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <article id="detail" hidden></article>
+</main>
+
+<footer id="about">
+  <div class="f-in">
+    <div>
+      <svg viewBox="0 0 200 124" role="img" aria-label="The Boosters Club"><use href="#sticker"/></svg>
+      <p>The Boosters Club is a recipe platform built around natural ingredients and foods that give you a boost.</p>
+    </div>
+    <div><h4 class="micro">Explore</h4><ul><li><a href="#menu">Recipes</a></li><li><a href="#blog">Blog</a></li><li><a href="#merch">Merch</a></li></ul></div>
+    <div><h4 class="micro">The Club</h4><ul><li><a href="#about">About</a></li><li><a href="#all-recipes">All recipes</a></li></ul></div>
+  </div>
+  <div class="f-base micro"><span>&copy; 2026 The Boosters Club</span><span>Brand identity and website by Hiero Studio</span></div>
+</footer>
+
+<script>
+var R=[
+{id:'sweet-potato-chickpea-bowl',t:'Sweet Potato & Crispy Chickpea Bowl',type:'Bowls',time:'40 min',serves:2,boost:'Fibre',img:'img/chickpea.jpg',alt:'Overhead view of a grain bowl with roast sweet potato, spiced chickpeas, feta, avocado and a yoghurt dressing.',
+ intro:'Roast wedges, chickpeas that crunch, quinoa and kale underneath, and a tahini yoghurt over the top. It keeps well for lunch the next day.',
+ ing:['2 medium sweet potatoes, cut into wedges','400g tin chickpeas, drained and dried','1½ tsp smoked paprika','1 tsp ground cumin','3 tbsp olive oil','150g quinoa, rinsed','100g kale, stalks removed','1 ripe avocado','80g feta','2 tbsp pumpkin seeds','1 lemon','Small handful of parsley','For the dressing: 3 tbsp yoghurt, 1 tbsp tahini, juice of ½ lemon, 1 tbsp water, pinch of salt'],
+ steps:['Heat the oven to 220°C (200°C fan). Toss the sweet potato with half the oil, salt and the paprika on one tray. Toss the chickpeas with the rest of the oil and the cumin on another.','Roast the sweet potato for 30 minutes, turning once. Roast the chickpeas for 20 to 25 minutes, shaking the tray halfway, until they rattle.','Cook the quinoa in salted water for 12 minutes, drain, and stir the kale through while it is still hot so it wilts. Squeeze in half the lemon.','Whisk the dressing until pourable.','Pile the quinoa and kale onto plates, then the sweet potato and chickpeas. Add sliced avocado, crumbled feta, pumpkin seeds and parsley. Spoon the dressing over and serve with a lemon wedge.']},
+{id:'roast-salmon-plate',t:'Roast Salmon, Sweet Potato & Hummus Plate',type:'Plates',time:'35 min',serves:2,boost:'Omega-3',img:'img/salmon.jpg',alt:'Overhead view of a plate of roast salmon, kale and cucumber salad, sweet potato wedges, hummus and sliced avocado.',
+ intro:'Everything on one plate and one tray. The salmon cooks in the last twelve minutes, so the sweet potato gets the head start it needs.',
+ ing:['2 salmon fillets, skin on','2 sweet potatoes, cut into 3cm chunks','3 tbsp olive oil','2 tsp dried oregano','1 tsp fennel seeds, lightly crushed','1 cucumber, sliced into half moons','80g rocket','1 ripe avocado','6 tbsp hummus','1 lemon','Flaky salt and black pepper'],
+ steps:['Heat the oven to 220°C (200°C fan). Toss the sweet potato with 2 tbsp oil and salt, and roast for 20 minutes.','Rub the salmon with the remaining oil, oregano, fennel seeds, salt and pepper.','Push the sweet potato to one side of the tray, add the salmon skin side down, and roast for 12 minutes until it flakes.','Dress the rocket and cucumber with the juice of half the lemon and a little oil.','Plate the salmon with the sweet potato, a spoonful of hummus, the salad and sliced avocado. Add a lemon wedge.']},
+{id:'chickpea-feta-mint-salad',t:'Chickpea, Feta & Mint Grain Salad',type:'Salads',time:'25 min',serves:4,boost:'Plant protein',img:'img/grain.jpg',alt:'Overhead view of a grain salad with cherry tomatoes, cucumber, feta, chickpeas, mint and rocket.',
+ intro:'A bulgur salad that gets better as it sits. Take it to work, take it to a picnic, or put it in the middle of the table.',
+ ing:['150g bulgur wheat','400g tin chickpeas, drained','250g cherry tomatoes, halved','1 cucumber, diced','½ red onion, sliced very thin','100g feta','Large handful of mint leaves','60g rocket','4 tbsp olive oil','2 tbsp red wine vinegar','Juice of 1 lemon','1 tsp sumac','Salt'],
+ steps:['Put the bulgur in a bowl, cover with boiling water by 2cm, cover, and leave for 15 minutes. Fluff with a fork and let it cool.','Soak the red onion in the vinegar for 10 minutes. This takes the sharpness out.','Whisk the oil, lemon juice, sumac and a good pinch of salt.','Combine the bulgur, chickpeas, tomatoes, cucumber and onion with its vinegar. Pour over the dressing and mix.','Fold in the mint and rocket, then crumble the feta over the top.']}
+];
+var SHORT={'sweet-potato-chickpea-bowl':'Chickpea bowl','roast-salmon-plate':'Roast salmon','chickpea-feta-mint-salad':'Grain salad'};
+var TAG={'sweet-potato-chickpea-bowl':'Bowl','roast-salmon-plate':'Plate','chickpea-feta-mint-salad':'Salad'};
+var POS={'sweet-potato-chickpea-bowl':'58% 50%','roast-salmon-plate':'64% 50%','chickpea-feta-mint-salad':'50% 50%'};
+var SLOTS=6;
+var STK='<svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg>';
+var $=function(s){return document.querySelector(s)};
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function num(i){return ('00'+(i+1)).slice(-3)}
+
+function cells(mode,cur){
+  var out='';
+  for(var i=0;i<SLOTS;i++){
+    var r=R[i];
+    if(r){
+      var inner='<span class="ph"><img src="'+r.img+'" alt="'+esc(r.alt)+'"></span><span class="row micro"><span>Item</span><span>'+num(i)+'</span></span>';
+      out+=mode==='link'?'<a class="cell" href="#'+r.id+'" data-i="'+i+'"'+(i===cur?' aria-current="true"':'')+' aria-label="'+esc(r.t)+'">'+inner+'</a>'
+                         :'<button type="button" class="cell" data-i="'+i+'" aria-label="'+esc(r.t)+'"'+(i===cur?' aria-current="true"':'')+'>'+inner+'</button>';
+    }else{
+      out+='<div class="cell empty" aria-hidden="true"><span class="ph"><i></i></span><span class="row micro"><span>Item</span><span>'+num(i)+'</span></span></div>';
+    }
+  }
+  return out;
+}
+
+/* cropped recipe list */
+function listActive(i){
+  document.querySelectorAll('#rlist a').forEach(function(a){a.classList.toggle('on',+a.dataset.i===i)});
+  document.querySelectorAll('#crop .l').forEach(function(l,k){l.classList.toggle('on',k===i)});
+}
+function drawHome(){
+  $('#strip').innerHTML=cells('link',-1);
+  $('#rlist').innerHTML=R.map(function(r,i){return '<li><a href="#'+r.id+'" data-i="'+i+'">'+esc(SHORT[r.id])+'</a></li>'}).join('');
+  $('#crop').innerHTML=R.map(function(r){return '<div class="l"><img src="'+r.img+'" alt="" style="object-position:'+POS[r.id]+'"></div>'}).join('');
+  listActive(1);
+}
+
+function drawDetail(r){
+  var i=R.indexOf(r);
+  $('#detail').innerHTML='<div class="stage"><div class="backdrop" aria-hidden="true"></div><div class="sheet">'+
+   '<div class="d-top micro"><a href="#menu">&larr; All recipes</a></div>'+
+   '<div class="d-main"><div class="pic"><div class="l on"><img src="'+r.img+'" alt="'+esc(r.alt)+'"></div></div><div class="d-body">'+
+   '<span class="micro">'+TAG[r.id]+' &nbsp;/&nbsp; Item '+num(i)+'</span><h1>'+esc(r.t)+'</h1><p class="lede">'+esc(r.intro)+'</p>'+
+   '<div class="facts"><div><span class="micro">Time</span><b>'+r.time+'</b></div><div><span class="micro">Serves</span><b>'+r.serves+'</b></div><div><span class="micro">Boost</span><b>'+esc(r.boost)+'</b></div></div>'+
+   '<h2 class="micro">Ingredients</h2><ul class="ing">'+r.ing.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+
+   '<h2 class="micro">Method</h2><ol class="steps">'+r.steps.map(function(x){return '<li><span>'+esc(x)+'</span></li>'}).join('')+'</ol>'+
+   '</div></div>'+
+   '<div class="strip" aria-label="More recipes">'+cells('link',i)+'</div>'+
+   '<section class="title"><div class="labels micro"><span>Recipes</span><span>Blog</span><span>Merch</span></div><a href="#" aria-label="The Boosters Club, home"><h2 class="big"><span class="fit">The Boosters Club</span></h2></a></section>'+
+   '</div></div>';
+}
+
+/* fit the wordmark to its container */
+function fit(){
+  document.querySelectorAll('.fit').forEach(function(el){
+    var box=el.parentNode.clientWidth;if(!box)return;
+    el.style.fontSize='100px';
+    var w=el.getBoundingClientRect().width;if(!w)return;
+    el.style.fontSize=(100*box/w*0.998)+'px';
+  });
+}
+
+function route(){
+  var h=location.hash.replace('#','');
+  var r=R.filter(function(x){return x.id===h})[0];
+  if(r){drawDetail(r);$('#home').hidden=true;$('#detail').hidden=false;document.title=r.t+' | The Boosters Club';window.scrollTo(0,0);fit();return}
+  var was=!$('#detail').hidden;
+  $('#detail').hidden=true;$('#home').hidden=false;document.title='The Boosters Club';
+  fit();
+  if(was){var el=h&&document.getElementById(h);if(el)el.scrollIntoView();else window.scrollTo(0,0)}
+}
+
+document.addEventListener('mouseover',function(e){
+  var a=e.target.closest('#rlist a');if(a)listActive(+a.dataset.i);
+});
+document.addEventListener('focusin',function(e){
+  var a=e.target.closest('#rlist a');if(a)listActive(+a.dataset.i);
+});
+window.addEventListener('hashchange',route);
+window.addEventListener('resize',fit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+drawHome();route();
+</script>
+
+</body></html>
