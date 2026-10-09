@@ -187,7 +187,8 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .fgroup>.micro{color:var(--soft);line-height:1;padding-top:12px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip small{font-size:9px;opacity:.6;margin-left:3px;letter-spacing:.06em}
-.fcount{color:var(--soft);margin:16px 0 0}
+.fcount{color:var(--soft);margin:16px 0 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fc-clear{padding:6px 12px}
 .chip{font-family:var(--micro);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:9px 16px;border-radius:999px;border:1px solid var(--rule);background:none;color:var(--ink);cursor:pointer}
 .chip:hover{border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--hi);border-color:var(--hi);color:var(--on-dark)}
@@ -927,11 +928,10 @@ function drawFinder(k){
   $('#fd-list').innerHTML=ms.slice(0,4).map(function(m){var r=m.r;return '<li><a href="#'+r.id+'"><span class="im"><img src="'+r.img+'" alt="" loading="lazy" decoding="async"></span>'+
     '<span class="fd-t"><b>'+esc(r.t)+'</b><span class="micro">'+m.hit.map(esc).join(' &middot; ')+' &nbsp;/&nbsp; '+r.time+(r.locked?' &nbsp;/&nbsp; Members':'')+'</span></span><span class="fd-go" aria-hidden="true">&rarr;</span></a></li>'}).join('');
   $('#fd-all').innerHTML=ms.length>4?'See all '+ms.length+' recipes for '+esc(nd.n.toLowerCase())+' &rarr;':'See every recipe &rarr;';
-  $('#fd-all').dataset.need=k;
+  $('#fd-all').setAttribute('href',ms.length>4?'#recipes?need='+k:'#recipes');
 }
 document.addEventListener('click',function(e){
   var b=e.target.closest('.need');if(b){drawFinder(b.dataset.need);return}
-  var a=e.target.closest('#fd-all');if(a){var nd=NEEDS.filter(function(x){return x.k===a.dataset.need})[0];if(nd&&nd.b.length===1)window.__needFilter=nd.b[0]}
 });
 function drawHome(){
   drawFinder('tired');
@@ -1139,6 +1139,18 @@ function drawAbout(){
    '</div>';
 }
 
+/* Recipes page opened from the Boost finder: show recipes matching any of that need's boosts */
+function applyNeed(k){
+  var nd=NEEDS.filter(function(x){return x.k===k})[0];if(!nd)return;
+  document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed','false')});
+  var n=0;
+  document.querySelectorAll('.rgrid .rcard').forEach(function(card){
+    if(card.classList.contains('more-card'))return;
+    var tags=card.dataset.tags.split('|'),hit=nd.b.some(function(b){return tags.indexOf(b)>=0});
+    card.hidden=!hit;if(hit)n++;
+  });
+  $('#fcount').innerHTML='Showing '+n+' recipes for '+esc(nd.n.toLowerCase())+' ('+nd.b.join(', ')+') &nbsp;<button type="button" class="chip fc-clear" data-f="all">Show all</button>';
+}
 function drawRecipes(){
   var free=R.filter(function(r){return !r.locked}).length;
   $('#detail').innerHTML='<div class="page">'+
@@ -1163,6 +1175,7 @@ function drawRecipes(){
 }
 document.addEventListener('click',function(e){
   var c=e.target.closest('.chip');if(!c)return;
+  if(c.classList.contains('fc-clear'))c=document.querySelector('.filters .chip[data-f="all"]');
   var f=c.dataset.f;
   document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
   document.querySelectorAll('.rgrid .rcard').forEach(function(card){
@@ -1226,13 +1239,14 @@ function fit(){
 }
 
 function route(){
-  var h=location.hash.replace('#','');
+  var h=location.hash.replace('#',''),need='';
+  if(h.indexOf('?need=')>=0){need=h.split('?need=')[1];h=h.split('?')[0]}
   var r=R.filter(function(x){return x.id===h})[0];
   if(r){drawDetail(r);$('#home').hidden=true;$('#detail').hidden=false;document.title=r.t+' | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='about'){drawAbout();$('#home').hidden=true;$('#detail').hidden=false;document.title='About | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='login'){drawLogin();$('#home').hidden=true;$('#detail').hidden=false;document.title='Log in | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='join'){drawJoin();$('#home').hidden=true;$('#detail').hidden=false;document.title='Join the Club | The Boosters Club';window.scrollTo(0,0);fit();return}
-  if(h==='recipes'){drawRecipes();if(window.__needFilter){var f=window.__needFilter;window.__needFilter=null;var c=[].find.call(document.querySelectorAll('.chip'),function(x){return x.dataset.f===f});if(c)c.click()}$('#home').hidden=true;$('#detail').hidden=false;document.title='Recipes | The Boosters Club';window.scrollTo(0,0);fit();return}
+  if(h==='recipes'){drawRecipes();if(need)applyNeed(need);$('#home').hidden=true;$('#detail').hidden=false;document.title='Recipes | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='blog'){drawBlog();$('#home').hidden=true;$('#detail').hidden=false;document.title='Blog | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='merch'){drawMerch();$('#home').hidden=true;$('#detail').hidden=false;document.title='Merch | The Boosters Club';window.scrollTo(0,0);fit();return}
   var b=B.filter(function(x){return x.id===h})[0];
