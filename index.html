@@ -117,10 +117,11 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 /* blog page */
 .sec-h .all{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
 .bp{max-width:1240px;margin-inline:auto;padding:clamp(28px,5vw,72px) clamp(16px,4vw,56px)}
-.bp-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:24px clamp(24px,4vw,64px);align-items:end;padding-bottom:clamp(20px,3vw,32px)}
+/* page headers stack: label, heading, then intro text across the full width */
+.bp-h{display:flex;flex-direction:column;gap:16px;padding-bottom:clamp(20px,3vw,32px)}
 .bp-h .micro{color:var(--soft)}
 .bp-h h1{font-family:var(--display);font-weight:400;font-size:clamp(56px,8vw,120px);line-height:.9;letter-spacing:-.015em;margin:12px 0 0}
-.bp-h p{margin:0;font-size:19px;line-height:1.45;color:var(--soft)}
+.bp-h p{margin:0;font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:var(--soft)}
 .feat{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;text-decoration:none;padding-block:clamp(24px,3vw,40px);border-block:1px dotted var(--rule)}
 .feat .im,.bcard .im{display:block;overflow:hidden;background:var(--cell)}
 .feat .im{aspect-ratio:3/2}
@@ -152,8 +153,8 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .d-life img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* members-only recipe: the start shows, then fades into a lock */
-.d-cook.locked{max-height:420px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 35%,transparent 95%);mask-image:linear-gradient(#000 35%,transparent 95%);pointer-events:none;user-select:none}
-.lockwall{position:relative;margin-top:-140px;padding:0 clamp(16px,4vw,56px) clamp(48px,6vw,88px);display:flex;justify-content:center}
+.d-cook.locked{max-height:230px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 20%,transparent 80%);mask-image:linear-gradient(#000 20%,transparent 80%);pointer-events:none;user-select:none}
+.lockwall{position:relative;margin-top:-90px;padding:0 clamp(16px,4vw,56px) clamp(48px,6vw,88px);display:flex;justify-content:center}
 .lock-card{max-width:560px;width:100%;text-align:center;background:var(--hi);color:var(--on-dark);padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 18px 50px rgba(26,24,19,.18)}
 .lock-card svg{width:72px;height:auto;display:block;margin-bottom:4px}
 .lock-card .micro{opacity:.8}
@@ -226,6 +227,28 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .faq summary::after{content:'+';font-family:var(--micro);font-size:20px;color:var(--soft)}
 .faq details[open] summary::after{content:'\2212'}
 .faq details p{margin:0 0 18px;color:var(--soft);max-width:60ch}
+
+/* about page */
+.ab-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center;padding-block:clamp(32px,5vw,64px);border-top:1px dotted var(--rule)}
+.ab-split.flip .im{order:2}
+.ab-split .im{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--cell)}
+.ab-split img{width:100%;height:100%;object-fit:cover;display:block}
+.ab-t .micro,.ab-vals>.micro,.ab-how>.micro{color:var(--soft)}
+.ab-t h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,4.6vw,68px);line-height:1;letter-spacing:-.01em;margin:12px 0 20px}
+.ab-t p{margin:0 0 16px;font-size:19px;line-height:1.55}
+.ab-t .btn{margin-top:12px}
+.ab-vals,.ab-how{padding-block:clamp(32px,5vw,64px);border-top:1px dotted var(--rule)}
+.vals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:20px}
+.val{border-top:2px solid var(--hi);padding-top:16px}
+.val h3{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.05;margin:10px 0 10px}
+.val p{margin:0;font-size:16px;line-height:1.5;color:var(--soft)}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:20px}
+.how a{display:flex;flex-direction:column;gap:6px;background:var(--hi);color:var(--on-dark);padding:clamp(20px,2.6vw,32px);text-decoration:none;transition:opacity .2s}
+.how a:hover{opacity:.9}
+.how b{font-family:var(--club);font-weight:600;text-transform:uppercase;font-size:clamp(56px,6vw,88px);line-height:.9}
+.how .micro{opacity:.8}
+.how p{margin:6px 0 0;font-size:16px;line-height:1.45}
+.ab-credit{color:var(--soft);text-align:center;padding-top:clamp(24px,3vw,40px);border-top:1px dotted var(--rule);margin:0}
 
 /* merch page */
 .prod{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(32px,5vw,64px);border-top:1px dotted var(--rule)}
@@ -357,7 +380,7 @@ footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
   .plan{padding:clamp(14px,2.6vh,32px);gap:clamp(6px,1.2vh,12px)}
   .plan ul{gap:clamp(2px,.6vh,6px)}
   .rwrap{min-height:calc(100svh - var(--toph))}
-  .rlist a{font-size:min(clamp(44px,6.6vw,96px),calc((100svh - var(--toph) - 250px)/12.1))}
+  .rlist a{font-size:min(clamp(44px,6.6vw,96px),calc((100svh - var(--toph) - 250px)/13.2))}
   .crop{width:min(100%,calc(100svh - var(--toph) - 2*clamp(40px,6vw,88px)))}
   .sec{min-height:calc(100svh - var(--toph));display:flex;flex-direction:column;justify-content:center;padding-block:clamp(32px,6vh,80px)}
   .sec-in{width:100%}
@@ -366,14 +389,15 @@ footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:900px){
   .posts,.bgrid,.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .jp{grid-template-columns:minmax(0,1fr)}
+  .vals{grid-template-columns:repeat(2,minmax(0,1fr))}
   .checkout{position:static}
-  .bp-h{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:720px){
   .feature,.d-hero,.d-cook,.f-in{grid-template-columns:minmax(0,1fr)}
   .pic{aspect-ratio:1/1}
   .rwrap{grid-template-columns:minmax(0,1fr)}
-  .shelf,.posts,.plans,.bgrid,.bgrid.two,.feat,.prod,.rgrid,.perks{grid-template-columns:minmax(0,1fr)}
+  .shelf,.posts,.plans,.bgrid,.bgrid.two,.feat,.prod,.rgrid,.perks,.ab-split,.vals,.how{grid-template-columns:minmax(0,1fr)}
+  .ab-split.flip .im{order:0}
   .prod.flip .im{order:0}
   .item{border-right:0;border-bottom:1px dotted var(--rule)}
   .item:last-child{border-bottom:0}
@@ -462,14 +486,14 @@ footer ul a:hover{text-decoration:underline;text-underline-offset:4px}
   <article id="detail" hidden></article>
 </main>
 
-<footer id="about">
+<footer>
   <div class="f-in">
     <div>
       <svg viewBox="0 0 200 124" role="img" aria-label="The Boosters Club"><use href="#sticker"/></svg>
       <p>The Boosters Club is a recipe platform built around natural ingredients and foods that give you a boost.</p>
     </div>
     <div><h4 class="micro">Explore</h4><ul><li><a href="#recipes">Recipes</a></li><li><a href="#blog">Blog</a></li><li><a href="#merch">Merch</a></li><li><a href="#join">Join the Club</a></li></ul></div>
-    <div><h4 class="micro">The Club</h4><ul><li><a href="#about">About</a></li><li><a href="#all-recipes">All recipes</a></li></ul></div>
+    <div><h4 class="micro">The Club</h4><ul><li><a href="#about">About</a></li><li><a href="#recipes">All recipes</a></li><li><a href="#join">Membership</a></li></ul></div>
   </div>
   <div class="f-base micro"><span>&copy; 2026 The Boosters Club</span><span>Brand identity and website by Hiero Studio</span></div>
 </footer>
@@ -503,28 +527,33 @@ var R=[
 {id:'lemon-lift-plate',locked:true,t:'The Lemon Lift Plate',type:'Plates',time:'45 min',serves:2,img:'img/lemon-chicken.jpg',alt:'Overhead view of a plate of sliced grilled lemon chicken, crispy baby potatoes, rocket and cucumber salad, tzatziki and a lemon wedge.',
  why:[['Protein','Grilled chicken makes this a properly filling plate that keeps you going all afternoon.'],['Live cultures','Homemade tzatziki starts with live Greek yoghurt, part of a varied diet for a happy gut.'],['Folate','Asparagus and peppery rocket are both good sources of folate.']],
  intro:'Grilled lemon chicken, crispy baby potatoes, asparagus, cucumber salad and homemade tzatziki. A Sunday-lunch plate that works just as well on a Tuesday.',
- ing:['2 chicken breasts, or 4 boneless thighs','2 lemons, zested and juiced','500g baby potatoes, halved','1 bunch of asparagus'],
- steps:['Mix the lemon zest and half the juice with olive oil, a crushed garlic clove, dried oregano and a good pinch of salt. Pour over the chicken and leave to marinate for at least 20 minutes.','Heat the oven to 220°C (200°C fan). Toss the potatoes in oil, salt and dill seeds, and roast for 30 to 35 minutes until golden and crisp.']},
+ ing:['2 chicken breasts, or 4 boneless thighs','2 lemons, zested and juiced'],
+ steps:['Mix the lemon zest and half the juice with olive oil, a crushed garlic clove, dried oregano and a good pinch of salt. Pour over the chicken and leave to marinate for at least 20 minutes.']},
 {id:'harissa-chicken-whipped-feta',locked:true,t:'Harissa Chicken & Whipped Feta',type:'Plates',time:'50 min',serves:2,img:'img/harissa-chicken.jpg',alt:'Overhead view of a bowl of sliced harissa chicken, charred roast carrots, herby couscous with pomegranate and red onion, whipped feta and lemon wedges.',
  why:[['Protein','Harissa-marinated chicken makes this a filling plate that keeps you going.'],['Vitamin A','Roast carrots are rich in beta-carotene, which your body turns into vitamin A.'],['Calcium','Whipped feta and yoghurt bring calcium to the plate.']],
  intro:'Harissa chicken, roasted carrots, herbed couscous, pomegranate and whipped feta. Smoky, sweet, creamy and bright, all on one plate.',
- ing:['2 chicken breasts, or 4 boneless thighs','2 tbsp rose harissa','400g carrots, halved lengthways','150g pearl couscous'],
- steps:['Mix the harissa with a little olive oil, lemon juice and salt. Rub it all over the chicken and leave to marinate for at least 20 minutes.','Heat the oven to 220°C (200°C fan). Toss the carrots with oil, cumin and a pinch of salt, and roast for 25 to 30 minutes until charred at the edges.']},
+ ing:['2 chicken breasts, or 4 boneless thighs','2 tbsp rose harissa'],
+ steps:['Mix the harissa with a little olive oil, lemon juice and salt. Rub it all over the chicken and leave to marinate for at least 20 minutes.']},
 {id:'mediterranean-chicken-plate',locked:true,t:'Mediterranean Chicken Plate',type:'Plates',time:'45 min',serves:2,img:'img/mediterranean-chicken.jpg',alt:'Overhead view of a bowl of sliced spiced chicken, charred roast cauliflower, tomato, cucumber and red onion salad, hummus and warm flatbread.',
  why:[['Protein','Spiced chicken and hummus together make this a properly filling plate.'],['Fibre','Roast cauliflower and chickpea hummus both add plenty of fibre.'],['Vitamin C','Ripe tomatoes and cauliflower are both good sources of vitamin C.']],
  intro:'Spiced chicken, roasted cauliflower, tomato-cucumber salad, hummus and warm flatbread. A sharing plate that tastes like a summer holiday.',
- ing:['2 chicken breasts, or 4 boneless thighs','1 tsp each ground cumin, smoked paprika and dried oregano','1 small cauliflower, cut into florets','250g cherry tomatoes, halved'],
- steps:['Mix the spices with olive oil, lemon juice, a crushed garlic clove and a good pinch of salt. Rub over the chicken and leave to marinate for at least 20 minutes.','Heat the oven to 220°C (200°C fan). Toss the cauliflower with oil, salt and a pinch of the spice mix, and roast for 25 minutes until charred at the edges.']},
+ ing:['2 chicken breasts, or 4 boneless thighs','1 tsp each ground cumin, smoked paprika and dried oregano'],
+ steps:['Mix the spices with olive oil, lemon juice, a crushed garlic clove and a good pinch of salt. Rub over the chicken and leave to marinate for at least 20 minutes.']},
 {id:'lemon-cod-crushed-peas',locked:true,t:'Lemon Cod & Crushed Peas',type:'Plates',time:'40 min',serves:2,img:'img/lemon-cod.jpg',alt:'Overhead view of a bowl of pan-seared cod, crushed peas with mint, asparagus, roasted new potatoes, lemon-dill yoghurt and a lemon wedge.',
  why:[['Lean protein','Cod is a light, lean white fish that still brings plenty of protein.'],['Fibre','Peas are one of the most fibre-rich vegetables in the freezer.'],['Folate','Peas and asparagus are both good sources of folate.']],
  intro:'Pan-seared cod, crushed peas with mint, roasted new potatoes and lemon-dill yoghurt. Light, fresh and on the table in forty minutes.',
- ing:['2 skinless cod fillets (about 140g each)','400g new potatoes, halved','300g frozen peas','1 bunch of asparagus'],
- steps:['Heat the oven to 220°C (200°C fan). Toss the potatoes with olive oil and salt, and roast for 30 to 35 minutes until golden.','Cook the peas and asparagus in boiling salted water for 3 minutes. Drain, set the asparagus aside, and roughly crush the peas with a fork, olive oil, lemon zest and torn mint.']},
+ ing:['2 skinless cod fillets (about 140g each)','400g new potatoes, halved'],
+ steps:['Heat the oven to 220°C (200°C fan). Toss the potatoes with olive oil and salt, and roast for 30 to 35 minutes until golden.']},
 {id:'sesame-tofu-greens',locked:true,t:'Sesame Tofu & Greens',type:'Bowls',time:'40 min',serves:2,img:'img/sesame-tofu.jpg',alt:'Overhead view of a bowl of crispy sesame tofu, brown rice, charred tenderstem broccoli, edamame beans, pickled carrot ribbons and a creamy ginger dressing.',
  why:[['Plant protein','Tofu and edamame make this a filling bowl with no meat at all.'],['Fibre','Brown rice, broccoli and edamame all bring plenty of fibre.'],['Calcium','Tofu set with calcium sulphate is a good plant source of calcium.']],
  intro:'Crispy sesame tofu, brown rice, tenderstem broccoli, edamame, pickled carrots and a ginger dressing. A plant-powered bowl with crunch in every bite.',
- ing:['280g block of extra-firm tofu','2 tbsp sesame seeds','150g brown rice','200g tenderstem broccoli'],
- steps:['Press the tofu between kitchen paper under something heavy for 15 minutes, then cut into cubes and toss with cornflour, soy sauce and sesame seeds.','Cook the brown rice in plenty of salted water for 25 to 30 minutes until tender. Meanwhile, quick-pickle the carrot ribbons in rice vinegar with a pinch of sugar and salt.']}
+ ing:['280g block of extra-firm tofu','2 tbsp sesame seeds'],
+ steps:['Press the tofu between kitchen paper under something heavy for 15 minutes, then cut into cubes and toss with cornflour, soy sauce and sesame seeds.']},
+{id:'morning-protein-plate',locked:true,t:'The Morning Protein Plate',type:'Breakfast',time:'20 min',serves:2,img:'img/morning-protein.jpg',alt:'Overhead view of a plate of soft scrambled eggs, blistered cherry tomatoes, sautéed mushrooms, sliced avocado, sourdough toast and rocket.',
+ why:[['Protein','Eggs bring good-quality protein to start the day, helping you stay full until lunch.'],['Healthy fats','Avocado and a drizzle of olive oil add the kind of fats that help you absorb vitamins.'],['B vitamins','Eggs and mushrooms are both good sources of B vitamins.']],
+ intro:'Soft scrambled eggs, sourdough toast, avocado, sautéed mushrooms and blistered cherry tomatoes. A slow weekend breakfast that is quick enough for a weekday.',
+ ing:['4 large eggs','2 thick slices of sourdough'],
+ steps:['Heat a little olive oil in a hot pan and blister the cherry tomatoes for 4 to 5 minutes until they split. Season and set aside.']}
 ];
 var B=[
 {"id": "post-what-is-a-booster", "img": "img/cheek.jpg", "t": "What is a booster, anyway?", "tag": "The Club", "read": "5 min", "x": "Not a supplement, not a shot, not a miracle. Just the everyday foods that leave you feeling better than before you ate them, and how to bring more of them into your week.", "body": [["", "When we started The Boosters Club, we kept coming back to one question: which foods actually make a difference to how you feel on an ordinary Tuesday? Not in a lab, not in a headline, but at 3pm when the day is dragging, the inbox is full and the biscuit tin is calling.\n\nThe answer we kept landing on was surprisingly unglamorous. It was not a powder or a pill. It was oranges, chickpeas, oats, oily fish, seeds, yoghurt, leafy greens and a good handful of herbs. Everyday foods, eaten often, put together in ways that taste good. This post is our attempt to explain what we mean by a booster, and how we hope you will use the idea."], ["Food first, always", "A booster, for us, is a whole food that brings something genuinely useful to the plate. That might be fibre that keeps you full and keeps your gut happy. It might be healthy fats that help your body absorb certain vitamins. It might be protein that turns a snack into something that lasts until dinner. Or it might simply be colour, which is often a sign that a fruit or vegetable is bringing a range of vitamins and plant compounds with it.\n\nWhat a booster is not: a supplement, a shot, a 'superfood' with a dramatic price tag, or anything that promises to detox, cleanse or cure. Your liver and kidneys already handle the detoxing. Our job is to give the rest of you something good to work with."], ["The everyday boosters we lean on", "If you opened a Club member's cupboard, this is roughly what you would find. Most of it keeps well, and none of it is hard to track down.\n- Citrus: oranges, lemons and limes for vitamin C and a hit of brightness.\n- Pulses: tinned chickpeas, lentils and beans for fibre, plant protein and iron.\n- Whole grains: oats, brown rice, wholemeal bread, barley and bulgur wheat.\n- Oily fish: salmon, mackerel, sardines and trout, fresh, frozen or tinned.\n- Seeds and nuts: pumpkin, sunflower, chia, ground flax, walnuts and almonds.\n- Live yoghurt or kefir: an easy daily spoonful.\n- Leafy greens and herbs: spinach, kale, rocket, parsley, coriander and mint.\n- Colourful veg and fruit: peppers, carrots, beetroot, berries, tomatoes.\n\nNone of these are rare or fussy. That is the point. A booster should be something you can pick up on a weekday on the way home."], ["No rules, just more", "We are not interested in cutting things out, labelling foods as good or bad, or making anyone feel guilty about a slice of cake. The idea is to add. One more handful of herbs, a spoonful of seeds, a squeeze of lemon, a tin of beans stirred into the sauce. Small additions, repeated often, are what change the way you eat over months and years.\n\nThis matters because most of us in the UK fall short on a few things rather than overdoing everything. Adults are advised to eat 30g of fibre a day, and the average is closer to 20g. Many of us do not reach 5 A Day of fruit and vegetables, and most people eat less oily fish than the recommended one portion a week. Adding boosters chips away at all three at once, without anyone having to give up anything they love."], ["How to spot a booster on your plate", "You do not need an app or a spreadsheet. We use three quick questions when we look at a meal.\n- Is there something with fibre? Whole grains, pulses, veg, fruit, nuts or seeds.\n- Is there something with protein? Eggs, fish, yoghurt, beans, tofu, chicken, lentils.\n- Is there colour? At least two or three different colours of plant on the plate.\n\nIf the answer to all three is yes, you are in good shape. If one is missing, that is your booster opportunity. Plain pasta with pesto becomes a booster meal with a tin of chickpeas, a handful of spinach wilted in and some toasted seeds on top. Toast becomes one with an egg and sliced tomato."], ["Common mistakes we see", "A few habits get in the way of eating well, and we have been guilty of all of them.\n- Going all in on Monday. A whole new diet rarely survives to Thursday. One change a week sticks far better.\n- Treating one food as magic. No single ingredient does it all. Variety across the week matters much more than any one 'hero' food.\n- Forgetting flavour. If healthy food tastes dull, you will not eat it. Salt, acid, fat, herbs and crunch are your friends.\n- Buying fresh and forgetting it. Frozen berries, frozen peas and tinned fish are boosters too, and they wait patiently.\n\nAnd a gentle note: if you have a medical condition, are pregnant or are thinking about big changes to how you eat, your GP, a pharmacist or a registered dietitian is the right person to talk to. We are here for the everyday cooking, not to replace proper advice."], ["Where to start this week", "If you want a simple first step, try this. Pick one meal you already eat most days and add one booster to it. Seeds on your breakfast. A handful of rocket in your lunchtime sandwich. A tin of lentils in your bolognese. Do it every day for a week and see how it feels.\n\nWhen you are ready for a full recipe, The Golden Crunch Bowl is a good place to begin, because it shows the whole idea on one plate: grains, pulses, colour and crunch. The Fresh Start Grain Salad is another easy one to batch up on a Sunday and dip into all week."], ["Why the sticker", "Our oval sticker is a little reminder that the best boosters do not come in a packet. Put it on an orange, a lunchbox, the fridge door, your cheek. It is there to nudge you towards one more good thing, not to tell you off.\n\nThat is really all a booster is. A food that leaves you feeling a bit better than before you ate it, and a habit of reaching for it more often. Welcome to the Club. Now go and make something good."]]},
@@ -540,9 +569,9 @@ var B=[
 {"id": "post-shop-the-market", "img": "img/bag.jpg", "t": "How to shop a market like a Club member", "tag": "Habits", "read": "6 min", "x": "A string bag, a loose plan and an eye on what is in season. How we shop for a week of boosters, get the best produce and waste far less.", "body": [["", "Shopping at a market, or even just the fruit and veg aisle of the supermarket, is more fun with a little plan. You come home with better food, you spend your money on what you will actually eat, and less ends up in the bin at the end of the week.\n\nHere is how we do it, from planning before you leave the house to storing everything once you get home."], ["Go with a loose list", "We plan two or three meals, not seven. A rigid seven-day plan almost always falls apart by Thursday, and that is when food gets wasted.\n\nOur approach:\n\n- Pick two or three meals you definitely want to cook, and write down what they need.\n- Check the fridge, freezer and cupboards first, and plan to use up anything that needs eating.\n- Add a few staples you always use: onions, garlic, lemons, a bag of salad leaves, eggs.\n- Leave space on the list for 'whatever looks best', and build a meal or two around it.\n\nThat last line is the secret. Markets reward flexibility, and the best thing you buy is often the thing you did not plan to.\n\nIt also helps to eat before you go. Shopping hungry is the fastest way to come home with three loaves of bread and nothing for dinner."], ["Buy what is in season", "In-season produce usually tastes better, is often cheaper, and may not have travelled as far. A rough guide to UK seasons:\n\n- Spring: asparagus, spring onions, radishes, rhubarb, new potatoes, wild garlic.\n- Summer: tomatoes, courgettes, strawberries, raspberries, peas, broad beans, cucumbers.\n- Late summer: peaches, plums, sweetcorn, runner beans, blackberries.\n- Autumn: squash, apples, pears, beetroot, mushrooms, kale.\n- Winter: cabbages, leeks, parsnips, Brussels sprouts, forced rhubarb, and imported citrus at its best.\n\nOur Summer Glow Salad is a good example: it is at its best in high summer when tomatoes and peaches actually taste of something. Ask stallholders what has just come in; they are usually happy to tell you."], ["Walk the whole market first", "Before you buy anything, take a lap. Look at what each stall has, check how fresh it looks, and notice where the best of each thing is. Then go back and shop.\n\nSigns of good produce:\n\n- Leafy greens that are perky, not limp or yellowing.\n- Root veg that is firm with no soft patches.\n- Herbs that smell strongly when you brush them.\n- Fruit that feels heavy for its size and smells sweet at the stalk end.\n\nToward the end of the day, some stalls sell off boxes of very ripe fruit and veg. These are perfect for soups, sauces, smoothies and baking, as long as you can use them in the next day or two.\n\nDo not be shy about talking to the people behind the stalls. Ask how to cook something unfamiliar, which apples are best for baking, or whether the strawberries will last until Sunday. Most stallholders know their produce inside out and are glad to share."], ["Buy loose", "Picking your own means you only buy what you need: two carrots, not a kilo bag. It also lets you plan for the week ahead.\n\n- Choose ripe avocados, peaches and tomatoes for the next day or two.\n- Choose firmer ones to ripen on the counter for later in the week.\n- Buy sturdy veg like cabbage, carrots and squash for the end of the week, and delicate things like salad leaves and berries for the start.\n\nAim for a mix of colours. It is a simple way to get variety, and it makes reaching 5 A Day feel much easier when the fridge is full of different things."], ["Store it well", "Good storage is where most food waste is won or lost.\n\n- Out of the fridge: tomatoes, bananas, unripe stone fruit, avocados, whole squash, potatoes and onions (keep potatoes and onions apart, somewhere cool and dark).\n- In the fridge: leafy greens wrapped loosely in a damp tea towel, berries in a single layer, carrots, celery, broccoli and ripe fruit you want to slow down.\n- Apples and bananas release a gas called ethylene that makes other fruit ripen faster, so keep them away from everything else unless you want to speed up a hard avocado.\n- Wash berries just before eating, not before storing."], ["Use it all up", "A few habits that help nothing go to waste:\n\n- Eat the most delicate things first: salad, herbs and berries early in the week, roots and cabbages later.\n- Do a fridge check on Wednesday and plan a 'use it up' meal: a frittata, a tray bake, a soup or a big grain salad.\n- Roast tired veg with olive oil and herbs; it brings soft vegetables back to life.\n- Freeze ripe bananas, berries and chopped herbs for smoothies and cooking.\n- Keep veg peelings and stalks in a bag in the freezer for stock."], ["Bring a bag", "A string bag lets everything breathe on the way home, carries more than it looks like it will, and folds into a pocket for next time. We may have made one: The Club Bag lives on the back of our kitchen door so we never leave without it.\n\nWhatever you use, bring something reusable and maybe a small box for soft fruit. Then enjoy it. A market trip is one of the nicest ways to spend an hour on a weekend, and it makes the week's cooking feel like a treat rather than a chore."]]},
 {"id": "post-desk-lunch", "img": "img/grain.jpg", "t": "The desk lunch that keeps you going", "tag": "Energy", "read": "6 min", "x": "Build it in a jar on Sunday and lunch is sorted until Wednesday. Our formula for a filling, flavourful desk lunch, plus how to keep it fresh and safe.", "body": [["", "The trick to a lunch that keeps you going all afternoon is the same as any good meal: slow carbs, protein, plenty of veg and something tasty to bring it all together. Get the balance right and you avoid that 3pm slump where the biscuit tin starts calling.\n\nA jar or a good lidded box makes it easy to carry. Spend 45 minutes on a Sunday and you can have three days of lunches waiting in the fridge, which is cheaper, more varied and much more satisfying than another meal deal."], ["Our formula", "Every jar we make follows the same pattern. Mix and match within each line and you will never get bored.\n\n- Slow carbs (a big scoop, about 75g cooked): quinoa, bulgur wheat, pearl barley, freekeh, wholewheat pasta, brown rice or roasted potatoes.\n- Protein (a good handful): chickpeas, butter beans, lentils, flaked salmon, chicken, boiled eggs, tofu or feta.\n- Veg (two colours at least): cherry tomatoes, peppers, cucumber, grated carrot, roasted squash, red cabbage, sweetcorn, peas.\n- Something salty or tangy: olives, feta, capers, pickled onions, a little parmesan.\n- Crunch: toasted seeds or chopped nuts.\n- Dressing: about two tablespoons.\n\nBeans, lentils and chickpeas are worth leaning on. They bring protein and fibre together, and three heaped tablespoons count as one of your 5 A Day (they only count once, however many you eat)."], ["Layer it right", "The order you pack a jar matters, because it decides whether lunch is crisp or soggy.\n\n- Bottom: dressing, so it does not touch the leaves.\n- Next: the sturdy, hard veg that is happy sitting in dressing, like cucumber, peppers, red onion and carrot. They actually get better as they marinate.\n- Middle: beans, grains and protein.\n- Top: soft veg, cheese, seeds and leafy greens or herbs, so they stay fresh and crisp.\n\nWhen you are ready to eat, tip it into a bowl, or give the sealed jar a good shake and eat straight from it.\n\nWide-necked jars of about 750ml to 1 litre are the most useful size. They hold a proper lunch, they are easy to fill and empty, and they stand upright in a bag. A lidded box works just as well; just keep the dressing in a small pot and add it at lunchtime."], ["Three jars to try", "- Mediterranean: lemon and olive oil dressing, cucumber, cherry tomatoes, chickpeas, bulgur wheat, feta, olives and a big handful of parsley and mint.\n- Smoky bean: lime and chilli dressing, red pepper, sweetcorn, black beans, brown rice, coriander and toasted pumpkin seeds. Add avocado on the day.\n- Salmon and dill: yoghurt, mustard and dill dressing, grated carrot, peas, pearl barley, flaked salmon, spinach and sunflower seeds.\n\nOur Fresh Start Grain Salad was made for this. Make the full batch on Sunday and portion it into jars.\n\nIf you prefer something warm in winter, the same formula works as a hot lunch. Pack grains, beans and roasted veg together, heat them right through until piping hot in the office microwave, then add leaves, herbs and dressing after."], ["What keeps, and what does not", "Grain salads with sturdy veg keep well for about three days in the fridge, so we make three jars at a time rather than five.\n\n- Keep avocado, soft herbs and very delicate leaves separate and add them on the day.\n- Cooked rice needs extra care. Cool it quickly, within an hour, keep it in the fridge and eat it within 24 hours, so save rice for Monday's jar and use other grains like quinoa, bulgur or barley for later in the week.\n- Cooked fish, chicken and eggs are best eaten within two days.\n- Keep your lunch in a fridge at work. If there is not one, use an insulated bag with an ice pack.\n\nIf anything smells off or you are unsure how long it has been, do not risk it."], ["Beat the afternoon slump", "What you eat is only part of the picture. A few habits help the afternoon feel less of a struggle.\n\n- Step away from the screen to eat, even for ten minutes. Taste your food; you will feel more satisfied.\n- Drink water through the day. Mild thirst can make you feel tired and unfocused. UK guidance suggests six to eight glasses of fluid a day.\n- Get some daylight: a short walk after lunch is one of the best energy boosters there is.\n- If you get hungry mid-afternoon, have a planned snack like an apple and a few nuts or a yoghurt rather than whatever is in the office kitchen."], ["Common mistakes", "- Too little protein. A salad of leaves and a few tomatoes will not get you to 5pm. Add beans, eggs, fish or cheese.\n- Too much dressing. Two tablespoons is plenty; more just pools at the bottom.\n- Making five jars. By Friday the veg is tired. Make three and plan something different, like leftovers, for the end of the week.\n- Forgetting crunch and flavour. Seeds, herbs, pickles and a squeeze of lemon are what make a jar something you look forward to."], ["Sunday shopping list", "For three jars you will need roughly:\n\n- One bag of grains (quinoa, bulgur or pearl barley)\n- Two tins of beans or chickpeas\n- A cucumber, a pepper, a punnet of cherry tomatoes and a couple of carrots\n- A block of feta or a pack of cooked salmon\n- A bunch of parsley or coriander\n- Lemons, olive oil and a jar of mixed seeds\n\nCook the grains, chop the veg, shake up a dressing and pack your jars while the kettle boils. That is lunch sorted until Wednesday."]]}
 ];
-var SHORT={'sweet-potato-chickpea-bowl':'Golden crunch','roast-salmon-plate':'Omega power','chickpea-feta-mint-salad':'Fresh start','summer-glow-salad':'Summer glow','crispy-greens-potatoes':'Crispy greens','raspberry-cloud-chia':'Raspberry cloud','lemon-lift-plate':'Lemon lift','harissa-chicken-whipped-feta':'Harissa chicken','mediterranean-chicken-plate':'Mediterranean','lemon-cod-crushed-peas':'Lemon cod','sesame-tofu-greens':'Sesame tofu'};
-var TAG={'sweet-potato-chickpea-bowl':'Bowl','roast-salmon-plate':'Plate','chickpea-feta-mint-salad':'Salad','summer-glow-salad':'Salad','crispy-greens-potatoes':'Plate','raspberry-cloud-chia':'Breakfast','lemon-lift-plate':'Plate','harissa-chicken-whipped-feta':'Plate','mediterranean-chicken-plate':'Plate','lemon-cod-crushed-peas':'Plate','sesame-tofu-greens':'Bowl'};
-var POS={'sweet-potato-chickpea-bowl':'58% 50%','roast-salmon-plate':'64% 50%','chickpea-feta-mint-salad':'50% 50%','summer-glow-salad':'50% 50%','crispy-greens-potatoes':'50% 50%','raspberry-cloud-chia':'50% 50%','lemon-lift-plate':'50% 50%','harissa-chicken-whipped-feta':'50% 50%','mediterranean-chicken-plate':'50% 50%','lemon-cod-crushed-peas':'50% 50%','sesame-tofu-greens':'50% 50%'};
+var SHORT={'sweet-potato-chickpea-bowl':'Golden crunch','roast-salmon-plate':'Omega power','chickpea-feta-mint-salad':'Fresh start','summer-glow-salad':'Summer glow','crispy-greens-potatoes':'Crispy greens','raspberry-cloud-chia':'Raspberry cloud','lemon-lift-plate':'Lemon lift','harissa-chicken-whipped-feta':'Harissa chicken','mediterranean-chicken-plate':'Mediterranean','lemon-cod-crushed-peas':'Lemon cod','sesame-tofu-greens':'Sesame tofu','morning-protein-plate':'Morning protein'};
+var TAG={'sweet-potato-chickpea-bowl':'Bowl','roast-salmon-plate':'Plate','chickpea-feta-mint-salad':'Salad','summer-glow-salad':'Salad','crispy-greens-potatoes':'Plate','raspberry-cloud-chia':'Breakfast','lemon-lift-plate':'Plate','harissa-chicken-whipped-feta':'Plate','mediterranean-chicken-plate':'Plate','lemon-cod-crushed-peas':'Plate','sesame-tofu-greens':'Bowl','morning-protein-plate':'Breakfast'};
+var POS={'sweet-potato-chickpea-bowl':'58% 50%','roast-salmon-plate':'64% 50%','chickpea-feta-mint-salad':'50% 50%','summer-glow-salad':'50% 50%','crispy-greens-potatoes':'50% 50%','raspberry-cloud-chia':'50% 50%','lemon-lift-plate':'50% 50%','harissa-chicken-whipped-feta':'50% 50%','mediterranean-chicken-plate':'50% 50%','lemon-cod-crushed-peas':'50% 50%','sesame-tofu-greens':'50% 50%','morning-protein-plate':'50% 50%'};
 var STK='<svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg>';
 var $=function(s){return document.querySelector(s)};
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
@@ -590,8 +619,8 @@ function drawDetail(r){
    '<section class="boost"><div class="boost-h"><svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg><h2 class="micro">Why it boosts</h2></div><ul>'+r.why.map(function(w){return '<li><b>'+esc(w[0])+'</b><span>'+esc(w[1])+'</span></li>'}).join('')+'</ul></section>'+
    '</div></div>'+
    (r.locked?
-   '<div class="d-cook locked"><section><h2 class="micro">Ingredients</h2><ul class="ing">'+r.ing.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></section>'+
-   '<section><h2 class="micro">Method</h2><ol class="steps">'+r.steps.map(function(x){return '<li><span>'+esc(x)+'</span></li>'}).join('')+'</ol></section></div>'+
+   '<div class="d-cook locked" aria-hidden="true"><section><h2 class="micro">Ingredients</h2><ul class="ing">'+r.ing.slice(0,2).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></section>'+
+   '<section><h2 class="micro">Method</h2><ol class="steps"><li><span>'+esc(r.steps[0].split('. ')[0])+'&hellip;</span></li></ol></section></div>'+
    '<div class="lockwall"><div class="lock-card"><svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg><span class="micro">Members only</span><h2>Unlock the full recipe</h2><p>This one is part of The Weekly Boost. Join the Club to see every ingredient, the full method and the shopping list.</p><a class="btn" href="#join">Join the Club &middot; &pound;3.99/mo</a></div></div>'
    :
    '<div class="d-cook"><section><h2 class="micro">Ingredients</h2><ul class="ing">'+r.ing.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+
@@ -680,6 +709,39 @@ document.addEventListener('click',function(e){
   }
 });
 
+function drawAbout(){
+  var free=R.filter(function(r){return !r.locked}).length;
+  $('#detail').innerHTML='<div class="page">'+
+   '<div class="d-top micro"><a href="#">&larr; Home</a></div>'+
+   '<div class="bp"><header class="bp-h"><span class="micro">About &nbsp;/&nbsp; The Boosters Club</span><h1>Food that gives <i>you a boost.</i></h1><p>The Boosters Club is a recipe platform built around natural ingredients and the everyday foods that leave you feeling better than before you ate them.</p></header>'+
+   '<section class="ab-split"><span class="im"><img src="img/dressing.jpg" alt="In a sunlit kitchen, a hand drizzles olive oil from a small glass jug over a bowl of grains, roast sweet potato, avocado and leaves."></span>'+
+    '<div class="ab-t"><span class="micro">Our story</span><h2>It started with an orange.</h2>'+
+    '<p>We kept asking the same question: which foods actually make a difference to how you feel on an ordinary Tuesday? Not in a lab or a headline, but at 3pm when the day is dragging.</p>'+
+    '<p>The answers were rarely new or expensive. Citrus, chickpeas, oily fish, seeds, yoghurt, a big handful of herbs. Good food that was already in the kitchen, just not on the plate often enough.</p>'+
+    '<p>So we made a club for it. A place for simple, colourful recipes built around natural boosters, with a little sticker to remind you that the best ones do not come in a packet.</p></div></section>'+
+   '<section class="ab-vals"><span class="micro">What we believe</span><div class="vals">'+
+    [['01','Add, don\u2019t cut','We are not interested in rules or restriction. The idea is to add: one more handful of greens, a spoonful of seeds, a squeeze of lemon.'],
+     ['02','Real food first','Every booster is a whole, natural ingredient. No powders, no shots, no miracle claims. Just food that is good for you and tastes like it.'],
+     ['03','Simple enough for a Tuesday','Recipes that fit a normal week: short lists, one tray where we can, and leftovers that make tomorrow\u2019s lunch.'],
+     ['04','Colour on every plate','If it looks bright, it usually is. We aim for three colours on most plates, because variety is the easiest boost of all.']]
+    .map(function(v){return '<div class="val"><span class="micro">'+v[0]+'</span><h3>'+v[1]+'</h3><p>'+v[2]+'</p></div>'}).join('')+
+   '</div></section>'+
+   '<section class="ab-how"><span class="micro">How the Club works</span><div class="how">'+
+    '<a href="#recipes"><b>'+free+'</b><span class="micro">Free recipes</span><p>Start cooking straight away. No sign-up needed.</p></a>'+
+    '<a href="#blog"><b>'+B.length+'</b><span class="micro">Blog posts</span><p>Notes on what to eat, why it helps and how to make it a habit.</p></a>'+
+    '<a href="#join"><b>Fri</b><span class="micro">New every week</span><p>Members get a new booster recipe every Friday, plus the full archive.</p></a>'+
+   '</div></section>'+
+   '<section class="ab-split flip"><span class="im"><img src="img/bag.jpg" alt="An orange string bag printed with the Boosters wordmark, packed with kale, tomatoes, citrus, carrots and bananas." loading="lazy"></span>'+
+    '<div class="ab-t"><span class="micro">Wear the sticker</span><h2>More than recipes.</h2>'+
+    '<p>The oval sticker started as a joke on a piece of fruit. Now it is on our string bags, our hoodies and, occasionally, our cheeks.</p>'+
+    '<p>It stands for a simple idea: eat a little brighter, a little more often, and enjoy it. If you are into that, you are already in the Club.</p>'+
+    '<a class="btn" href="#join">Join the Club</a> &nbsp; <a class="btn ghost" href="#merch">See the merch</a></div></section>'+
+   '<p class="ab-credit micro">Brand identity and website by Hiero Studio</p>'+
+   '</div>'+
+   '<section class="title"><a href="#" aria-label="The Boosters Club, home"><h2 class="big"><span class="fit">The Boosters Club</span></h2></a></section>'+
+   '</div>';
+}
+
 function drawRecipes(){
   var free=R.filter(function(r){return !r.locked}).length;
   var types=[];R.forEach(function(r){if(types.indexOf(r.type)<0)types.push(r.type)});
@@ -766,6 +828,7 @@ function route(){
   var h=location.hash.replace('#','');
   var r=R.filter(function(x){return x.id===h})[0];
   if(r){drawDetail(r);$('#home').hidden=true;$('#detail').hidden=false;document.title=r.t+' | The Boosters Club';window.scrollTo(0,0);fit();return}
+  if(h==='about'){drawAbout();$('#home').hidden=true;$('#detail').hidden=false;document.title='About | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='join'){drawJoin();$('#home').hidden=true;$('#detail').hidden=false;document.title='Join the Club | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='recipes'){drawRecipes();$('#home').hidden=true;$('#detail').hidden=false;document.title='Recipes | The Boosters Club';window.scrollTo(0,0);fit();return}
   if(h==='blog'){drawBlog();$('#home').hidden=true;$('#detail').hidden=false;document.title='Blog | The Boosters Club';window.scrollTo(0,0);fit();return}
