@@ -86,7 +86,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .labels span:nth-child(2){left:13.5%}
 .labels span:nth-child(3){left:30.5%}
 .big{margin:0;font-size:0;line-height:0;font-weight:600}
-.big .fit{display:inline-block;white-space:nowrap;font-family:var(--club);font-weight:600;text-transform:uppercase;letter-spacing:.005em;line-height:.84;font-size:80px;color:var(--ink)}
+.big .fit{display:inline-block;white-space:nowrap;font-family:var(--club);font-weight:600;text-transform:uppercase;letter-spacing:.005em;line-height:.84;font-size:80px;color:var(--hi)}
 .title a{text-decoration:none;display:block}
 
 /* full screen face */
@@ -111,7 +111,8 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .sec-in{max-width:1120px;margin-inline:auto}
 .sec-h{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
 .sec-h h2,.sec-h h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,92px);line-height:.95;letter-spacing:-.015em;margin:0}
-.sec-h h2 i,.sec-h h1 i{font-style:italic}
+/* no italics in titles */
+h1 i,h1 em,h2 i,h2 em,h3 i,h3 em{font-style:normal}
 .sec-h .micro{color:var(--soft)}
 .shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px dotted var(--rule)}
 .item{padding:14px;border-right:1px dotted var(--rule);min-width:0}
@@ -277,6 +278,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 /* login */
 .top nav .login{border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:7px 14px;margin-block:-2px}
 .top nav .login:hover{border-color:var(--on-dark)}
+.top nav .login+.btn{margin-left:calc(10px - clamp(16px,3.4vw,40px))}
 .lk-login{color:var(--on-dark);opacity:.8;margin-top:4px}
 .co-login{color:var(--on-dark);text-align:center;opacity:.85}
 .lk-login:hover,.co-login:hover{opacity:1}
@@ -304,10 +306,10 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .lg-join a{color:var(--ink)}
 
 /* boost finder: a menu-style list of needs on the left, the matching boosts and recipes on the right */
-.finder{background:var(--paper);border-top:1px dotted var(--rule);padding:clamp(48px,6vw,96px) clamp(16px,4vw,56px)}
+.finder{background:var(--paper);border-top:1px dotted var(--rule);padding:clamp(32px,min(6vw,6vh),96px) clamp(16px,4vw,56px)}
 .fd-in{max-width:1240px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
 .fd-eyebrow{color:var(--soft)}
-.fd-left h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,5.4vw,84px);line-height:.95;letter-spacing:-.015em;margin:14px 0 clamp(24px,3.5vh,40px)}
+.fd-left h2{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,92px);line-height:.95;letter-spacing:-.015em;margin:14px 0 clamp(24px,3.5vh,40px)}
 .fd-needs{list-style:none;margin:0;padding:0;border-top:1px dotted var(--rule)}
 .fd-needs li{border-bottom:1px dotted var(--rule)}
 .need{width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:baseline;gap:12px;background:none;border:0;padding:clamp(10px,1.6vh,15px) 0;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
@@ -315,7 +317,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .fd-name{font-family:var(--display);font-size:clamp(22px,2.1vw,30px);line-height:1.1;transition:color .2s,padding .25s}
 .fd-count{color:var(--soft)}
 .need:hover .fd-name{color:var(--hi)}
-.need[aria-pressed="true"] .fd-name{color:var(--hi);font-style:italic}
+.need[aria-pressed="true"] .fd-name{color:var(--hi)}
 .need[aria-pressed="true"] .fd-n,.need[aria-pressed="true"] .fd-count{color:var(--hi)}
 .need[aria-pressed="true"] .fd-count::after{content:"  \2192"}
 .fd-right{position:sticky;top:calc(var(--toph) + 24px)}
@@ -327,8 +329,8 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .fd-why p{margin:10px 0 0;font-size:16px;line-height:1.5;max-width:46ch}
 .fd-list{list-style:none;margin:0;padding:0}
 .fd-list li{border-bottom:1px dotted var(--rule)}
-.fd-list a{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;text-decoration:none}
-.fd-list .im{display:block;width:76px;height:76px;overflow:hidden}
+.fd-list a{display:grid;grid-template-columns:clamp(56px,8vh,76px) minmax(0,1fr) auto;gap:16px;align-items:center;padding:clamp(8px,1.4vh,14px) 0;text-decoration:none}
+.fd-list .im{display:block;width:clamp(56px,8vh,76px);height:clamp(56px,8vh,76px);overflow:hidden}
 .fd-list img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.15);transition:transform .5s ease}
 .fd-list a:hover img{transform:scale(1.25)}
 .fd-t b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(20px,1.7vw,24px);line-height:1.1}
@@ -338,7 +340,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .fd-list a:hover b{color:var(--hi)}
 .fd-foot{margin-top:18px}
 .fd-all{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
-.fd-note{color:var(--soft);font-size:9px;margin:22px 0 0}
+.fd-note{color:var(--soft);font-size:9px;margin:clamp(12px,2vh,22px) 0 0}
 @media (max-width:900px){.fd-in{grid-template-columns:minmax(0,1fr)}.fd-right{position:static}}
 @media (max-width:520px){.need{grid-template-columns:30px minmax(0,1fr) auto}.fd-list a{grid-template-columns:64px minmax(0,1fr) auto}.fd-list .im{width:64px;height:64px}}
 
@@ -408,6 +410,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .plan.main{background:#fff;color:var(--ink);border-color:transparent}
 .plan-top{display:flex;justify-content:space-between;align-items:center}
 .plan-top svg{width:64px;height:auto;display:block}
+.plan>.micro:first-child,.plan-top{min-height:40px;display:flex;align-items:center}
 .price{font-family:var(--display);font-size:clamp(44px,4.6vw,68px);line-height:1}
 .price small{font-family:var(--micro);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .plan ul{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:6px}
@@ -415,6 +418,7 @@ button.cell:hover .ph img,a.cell:hover .ph img{transform:scale(1.05)}
 .plan li::before{content:'+';position:absolute;left:0;font-family:var(--micro);font-weight:500}
 .plan .btn{align-self:flex-start;margin-top:auto}
 .plan .fine{color:var(--soft);font-size:9px}
+.plan:not(.main) .fine{color:inherit;opacity:.7}
 .more{display:inline-flex;gap:12px;align-items:baseline;margin-top:clamp(18px,3vh,32px);text-decoration:none;font-size:18px;color:var(--ink);border-bottom:1px solid var(--list-hot);padding-bottom:3px}
 .more .micro{color:var(--list-hot)}
 .see-all{display:table;margin-top:16px;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:3px}
@@ -444,7 +448,7 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
 .f-week span{display:block;margin-top:4px;opacity:.7}
 .f-week:hover b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 .f-base{max-width:1240px;margin:clamp(36px,4vw,56px) auto 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;opacity:.7}
-@media (max-width:900px){.f-in{grid-template-columns:repeat(2,minmax(0,1fr))}.f-about{grid-column:1/-1}.f-news{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.f-in{grid-template-columns:repeat(2,minmax(0,1fr))}.f-about{grid-column:1/-1}.f-col:last-child{grid-column:1/-1}.f-news{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.f-base{flex-direction:column;gap:6px}}
 
 /* recipe page */
@@ -515,6 +519,8 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
   .rlist a{font-size:min(clamp(44px,6.6vw,96px),calc((100svh - var(--toph) - 270px)/13.2))}
   .crop{width:min(100%,calc(100svh - var(--toph) - 2*clamp(40px,6vw,88px)))}
   .sec{min-height:calc(100svh - var(--toph));display:flex;flex-direction:column;justify-content:center;padding-block:clamp(32px,6vh,80px)}
+  .finder{min-height:calc(100svh - var(--toph));display:flex;flex-direction:column;justify-content:center}
+  .fd-in{width:100%}
   .sec-in{width:100%}
   .item .im{width:100%;max-height:max(200px,calc(100svh - var(--toph) - 360px))}
 }
@@ -572,6 +578,38 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
   .sec{padding-block:48px}
   .join-lede{font-size:17px}
 }
+
+/* titles stay on one line (oneLine() shrinks any that would overflow); card and article titles wrap but balance their lines */
+.feat>*,.art-h,.fd-why,.ab-t,.val,.f-news-t,.bp-h>*,.sec-h>*,.d-body,.lg-in{min-width:0}
+.feat h2,.art-h h1,.fd-why b,.sec-h h1,.sec-h h2,.bp-h h1,.ab-t h2,.val h3,.lg-in h1,.d-body h1,.f-news h2,.fd-left h2,.art-more-h h2{white-space:nowrap;min-width:0;max-width:100%}
+.feat h2{align-self:stretch}
+h3,.art-h h1,.fd-t b{text-wrap:balance}
+
+/* motion: page-load entrance + scroll reveals. Hidden states only apply once JS adds html.m, and never with reduced motion. */
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:none}}
+@keyframes wordup{from{transform:translateY(105%)}to{transform:none}}
+@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1)}}
+@keyframes pop{0%{transform:scale(.6) rotate(-14deg);opacity:0}60%{transform:scale(1.08) rotate(4deg);opacity:1}100%{transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  html.m .top{animation:drop .7s cubic-bezier(.2,.8,.2,1) both}
+  html.m .strip .cell{animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d,0) * 90ms + 150ms)}
+  html.m .big{overflow:hidden}
+  html.m .big .fit{animation:wordup 1.1s cubic-bezier(.16,1,.3,1) both;animation-delay:.25s}
+  html.m .rv{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d,0) * 80ms)}
+  html.m .rv.in{opacity:1;transform:none}
+  html.m .big.rv{opacity:1;transform:none}
+  html.m .big.rv .fit{animation:none;transform:translateY(105%);transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+  html.m .big.rv.in .fit{transform:none}
+  .face{overflow:hidden}
+  html.m .face.rv{opacity:1;transform:none}
+  html.m .face.rv img{transform:scale(1.14);transition:transform 2.6s cubic-bezier(.2,.8,.2,1)}
+  html.m .face.rv.in img{transform:none}
+  html.m .plan-top svg.rv,html.m .boost-h svg.rv{transform:scale(.6) rotate(-14deg)}
+  html.m .plan-top svg.rv.in,html.m .boost-h svg.rv.in{animation:pop .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:.3s}
+  html.m #detail .page{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+}
+
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -625,7 +663,7 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
       <div class="fd-in">
         <div class="fd-left">
           <span class="micro fd-eyebrow">The Boost finder</span>
-          <h2 id="finder-h">What do you<br><i>need today?</i></h2>
+          <h2 id="finder-h">What do you <i>need today?</i></h2>
           <ol class="fd-needs" id="fd-needs" aria-label="Choose what you need"></ol>
         </div>
         <div class="fd-right">
@@ -647,6 +685,7 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
             <div class="price">&pound;0</div>
             <ul><li>Six starter recipes</li><li>The Boosters blog</li></ul>
             <a class="btn ghost" href="#recipes">Browse the free recipes</a>
+            <span class="micro fine">Always free</span>
           </div>
           <div class="plan main">
             <div class="plan-top"><span class="micro">Club member</span><svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg></div>
@@ -684,7 +723,7 @@ footer ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;
     <nav class="f-col" aria-label="Members"><h4 class="micro">Members</h4><ul><li><a href="#join">Join the Club</a></li><li><a href="#login">Log in</a></li><li><a href="#recipes">Members&rsquo; recipes</a></li></ul></nav>
     <div class="f-col"><h4 class="micro">This week</h4><a class="f-week" id="f-week" href="#recipes"></a></div>
   </div>
-  <div class="f-base micro"><span>&copy; 2026 The Boosters Club</span><span>Eat a little brighter</span><span>Brand identity and website by Hiero Studio</span></div>
+  <div class="f-base micro"><span>&copy; 2026 The Boosters Club</span><span>Eat a little brighter</span><span>Brand identity and website by Serentic</span></div>
 </footer>
 
 <script>
@@ -925,6 +964,7 @@ function drawFinder(k){
   $('#fd-needs').innerHTML=NEEDS.map(function(nd,i){var n=needMatches(nd).length;return '<li><button type="button" class="need" data-need="'+nd.k+'" aria-pressed="'+(nd.k===k)+'"><span class="fd-n micro">'+('0'+(i+1)).slice(-2)+'</span><span class="fd-name">'+esc(nd.n)+'</span><span class="fd-count micro">'+n+' recipes</span></button></li>'}).join('');
   var nd=NEEDS.filter(function(x){return x.k===k})[0],ms=needMatches(nd);
   $('#fd-why').innerHTML='<div class="fd-why-h"><svg viewBox="0 0 200 124" aria-hidden="true"><use href="#sticker"/></svg><span class="micro">'+esc(nd.n)+'</span></div><b>'+nd.b.join(' &middot; ')+'</b><p>'+esc(nd.w)+'</p>';
+  if(window.oneLine)oneLine();
   $('#fd-list').innerHTML=ms.slice(0,4).map(function(m){var r=m.r;return '<li><a href="#'+r.id+'"><span class="im"><img src="'+r.img+'" alt="" loading="lazy" decoding="async"></span>'+
     '<span class="fd-t"><b>'+esc(r.t)+'</b><span class="micro">'+m.hit.map(esc).join(' &middot; ')+' &nbsp;/&nbsp; '+r.time+(r.locked?' &nbsp;/&nbsp; Members':'')+'</span></span><span class="fd-go" aria-hidden="true">&rarr;</span></a></li>'}).join('');
   $('#fd-all').innerHTML=ms.length>4?'See all '+ms.length+' recipes for '+esc(nd.n.toLowerCase())+' &rarr;':'See every recipe &rarr;';
@@ -1135,7 +1175,7 @@ function drawAbout(){
     '<p>The oval sticker started as a joke on a piece of fruit. Now it is on our string bags, our hoodies and, occasionally, our cheeks.</p>'+
     '<p>It stands for a simple idea: eat a little brighter, a little more often, and enjoy it. If you are into that, you are already in the Club.</p>'+
     '<a class="btn" href="#join">Join the Club</a> &nbsp; <a class="btn ghost" href="#merch">See the merch</a></div></section>'+
-   '<p class="ab-credit micro">Brand identity and website by Hiero Studio</p>'+
+   '<p class="ab-credit micro">Brand identity and website by Serentic</p>'+
    '</div>'+
    '<section class="title"><a href="#" aria-label="The Boosters Club, home"><h2 class="big"><span class="fit">The Boosters Club</span></h2></a></section>'+
    '</div>';
@@ -1234,6 +1274,21 @@ function drawMerch(){
 }
 
 /* fit the wordmark to its container, and record the sticky bar height for full-screen sections */
+
+/* keep titles on one line: shrink only those that would overflow; value-card titles share one size */
+var ONE=['.feat h2','.art-h h1','.fd-why b','.sec-h h1,.sec-h h2','.bp-h h1','.ab-t h2','.lg-in h1','.d-body h1','.f-news h2','.fd-left h2','.art-more-h h2','.val h3'];
+function oneLine(){
+  ONE.forEach(function(sel){
+    var els=[].filter.call(document.querySelectorAll(sel),function(e){e.style.fontSize='';e.style.whiteSpace='';return e.clientWidth>0});
+    var k=1;els.forEach(function(e){if(e.scrollWidth>e.clientWidth+1)k=Math.min(k,e.clientWidth/e.scrollWidth)});
+    if(k<1)els.forEach(function(e){
+      var f=sel==='.val h3'?k:e.clientWidth/e.scrollWidth;if(f>=1)return;
+      /* too long to fit at a readable size: let it wrap onto balanced lines instead */
+      if(f<.5){e.style.whiteSpace='normal';return}
+      e.style.fontSize=(parseFloat(getComputedStyle(e).fontSize)*f*.98)+'px';
+    });
+  });
+}
 function fit(){
   document.documentElement.style.setProperty('--toph',$('.top').offsetHeight+'px');
   document.querySelectorAll('.fit').forEach(function(el){
@@ -1242,8 +1297,25 @@ function fit(){
     var w=el.getBoundingClientRect().width;if(!w)return;
     el.style.fontSize=(100*box/w*0.998)+'px';
   });
+  oneLine();
 }
 
+
+/* motion: tag elements for scroll reveal, stagger siblings, and observe them */
+var MO=('IntersectionObserver' in window)&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches);
+if(MO)document.documentElement.classList.add('m');
+var RV='.face,.big,.sec-h,.join-lede,.plan,.plan-top svg,.boost-h svg,.posts>*,.fd-left h2,.fd-eyebrow,.fd-needs>li,.rlist>li,.more,.see-all,.bp-h,.bgrid>*,.rgrid>*,.ab-split,.vals>*,.how>*,.perks>*,.boost,.d-cook,.d-life,.faq,.art-h,.art-img,.art-more-h,.f-news-t,.f-cta,.f-in>*,.lg-main,.jp-main,.prod-t';
+var io=MO&&new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+function motion(){
+  if(!MO)return;
+  document.querySelectorAll('.strip .cell').forEach(function(c,i){c.style.setProperty('--d',Math.min(i,9))});
+  document.querySelectorAll(RV).forEach(function(el){
+    if(el.classList.contains('rv')||el.closest('.strip'))return;
+    var sib=el.parentNode?[].filter.call(el.parentNode.children,function(x){return x.matches(RV)}):[];
+    el.style.setProperty('--d',Math.min(Math.max(sib.indexOf(el),0),6));
+    el.classList.add('rv');io.observe(el);
+  });
+}
 function route(){
   var h=location.hash.replace('#',''),need='';
   if(h.indexOf('?need=')>=0){need=h.split('?need=')[1];h=h.split('?')[0]}
@@ -1277,7 +1349,8 @@ document.addEventListener('click',function(e){
 window.addEventListener('hashchange',route);
 window.addEventListener('resize',fit);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
-drawHome();route();
+drawHome();route();motion();
+window.addEventListener('hashchange',function(){setTimeout(motion,0)});
 </script>
 
 </body></html>
